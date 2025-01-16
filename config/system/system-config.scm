@@ -16,12 +16,14 @@
 (define locutus-keyboard-layout
   (keyboard-layout "us"))
 
+;; Transformations not being used due to bug, stumpwm dependencies require
+;; 2.4.7 fasl's (current in Guix)
 (define latest-sbcl
   (options->transformation
    '((with-latest . "sbcl"))))
 
 (define stumpwm-base-packages
-  (list (latest-sbcl sbcl)
+  (list sbcl ;(latest-sbcl sbcl)
         stumpwm+slynk))
 
 ;; System Services
