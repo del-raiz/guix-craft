@@ -1,6 +1,4 @@
-;;;; lem-config.asd
-
-(asdf/parse-defsystem:defsystem "lem-config"
+(defsystem lem-config
   :author "Erik P Almaraz"
   :license "GPLv3"
   :version "0.0.1"
