@@ -14,17 +14,7 @@
 
 (in-package :stumpwm)
 
-;;; StumpWM Commands --> keybindings set in keybindings.lisp file
-
-;; (defcommand firefox () ()
-;;   "Run or raise Firefox."
-;;   (sb-thread:make-thread (lambda () (run-or-raise "firefox" '(:class "Firefox") t nil))))
-
-;; (defcommand my-eval (args) ((:rest "My Eval: "))
-;;   "Alternate EVAL function that returns theme formatted output, bind to ':'."
-;;   (message "~a" (eval args)))
-  
-;; (define-key *root-map* (kbd ":") "my-eval")
+;;; StumpWM Commands, Helper Functions, and Macros
 
 (defcommand delete-window-and-frame () ()
   "Delete the current frame with its window."
@@ -57,7 +47,10 @@
 (defcommand slynk-start-server () ()
   "Start a slynk server for sly."
   (require :slynk)
-  (slynk:create-server :port *stumpwm-port* :dont-close t)
+  (sb-thread:make-thread 
+   (lambda ()
+     (slynk:create-server :port *stumpwm-port* :dont-close t))
+   :name "Slynk Server Process.")
   (echo-string (current-screen) "Starting slynk."))
 
 (defcommand slynk-stop-server () ()
@@ -65,9 +58,6 @@
   (slynk:stop-server *stumpwm-port*)
   (echo-string (current-screen) "Closing slynk."))
 
-;; Kept for archive purposes
-;; (defcommand slynk (port) ((:string "Port number: "))
-;;   (sb-thread:make-thread
-;;    (lambda ()
-;;      (slynk:create-server :port (parse-integer port) :dont-close t))
-;;    :name "Start Slynk server process."))
+;; TODO create commands to start swank server for Lem
+;; --> need cl-micros
+;; --> look into micros/swank...
