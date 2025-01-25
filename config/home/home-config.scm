@@ -14,6 +14,7 @@
                      gstreamer video compton image-viewers linux music
                      gnucash gimp inkscape graphics compression version-control
                      guile guile-xyz emacs emacs-xyz sdl compression
+                     text-editors
                      ;; added from system
                      lisp lisp-xyz wm xorg xdisorg freedesktop
                      ssh cups suckless networking package-management)
