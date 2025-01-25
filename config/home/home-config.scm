@@ -2,13 +2,16 @@
   #:use-module (gnu)
   #:use-module (gnu home)
   #:use-module (gnu home services)
-  #:use-module (gnu home services desktop)
+  #:use-module (gnu home services pm)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
+  #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
-  #:use-module (config home services home-impure-symlinks))
+  #:use-module (config home services home-impure-symlinks)
+  #:use-module (config home services streaming)
+  #:use-module (config home services udiskie))
 
 (use-package-modules fonts web-browsers gnuzilla password-utils gnupg mail
                      gstreamer video compton image-viewers linux music
@@ -50,6 +53,7 @@
         gstreamer ;;|--> gnu packages gstreamer
         gst-plugins-good
         gst-plugins-bad
+        gst-plugins-ugly
         gst-libav
         mpv ;;|--> gnu packages video :apps
         vlc
@@ -97,6 +101,7 @@
          emacs-mbsync
          emacs-org-superstar
          emacs-org-appear
+         emacs-0x0
          emacs-erc-hl-nicks
          emacs-erc-image
          emacs-emojify))
@@ -127,9 +132,7 @@
         sbcl-stumpwm-battery-portable))
 
 (define x11-util-packages
-  (list font-hack ;;|--> gnu packages fonts
-        font-jetbrains-mono
-        xterm ;;|--> gnu packages xorg
+  (list xterm ;;|--> gnu packages xorg
         transset
         xhost
         xset
@@ -147,7 +150,7 @@
 (define *home-path* "/home/logoraz/dotfiles/")
 
 
-(define logoraz-home
+(define stumpwm-home
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
@@ -161,86 +164,120 @@
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.
    (services
-    (list
-     (service home-pipewire-service-type)
-     (service home-dbus-service-type) ;; for bluetooth --> system
-     (simple-service 'home-impure-symlinks-dotfiles
-                     home-impure-symlinks-service-type
-                     `( ;; guix Configuration Scaffolding
-                       (".config/guix/channels.scm"
-                        ,(string-append
-                          *home-path*
-                          "config/system/channels.scm"))
-                       ;; StumpWM XDG Configuration Scaffolding
-                       (".config/stumpwm/config"
-                        ,(string-append
-                          *home-path*
-                          "files/stumpwm/config.lisp"))
-                       (".config/stumpwm/libraries"
-                        ,(string-append
-                          *home-path*
-                          "files/stumpwm/libraries"))
-                       (".config/stumpwm/modules"
-                        ,(string-append
-                          *home-path*
-                          "files/stumpwm/modules"))
-                       ;; Xorg Configuration Scaffolding
-                       (".Xdefaults"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/dot-Xdefaults"))
-                       (".Xresources"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/dot-Xresources"))
-                       (".icons"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/dot-icons"))
-                       (".config/xorg/start-xterm.sh"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/start-xterm.sh"))
-                       ;; Emacs Configuration Scaffolding
-                       (".config/emacs"
-                        ,(string-append
-                          *home-path*
-                          "files/emacs"))
-                       ;; Lem Configuration Scaffolding
-                       (".config/lem"
-                        ,(string-append
-                          *home-path*
-                          "files/lem"))
-                       ;; Nyxt Configuration Scaffolding
-                       (".config/nyxt"
-                        ,(string-append
-                          *home-path*
-                          "files/nyxt"))
-                       (".local/share/nyxt/extensions"
-                        ,(string-append
-                          *home-path*
-                          "files/nyxt/extensions"))))
-     (simple-service 'env-vars home-environment-variables-service-type
-                     '(("LC_COLLATE" . "C")
-                       ("EDITOR" . "emacs")
-                       ("BROWSER" . "nyxt")
-                       ("XDG_SESSION_TYPE" . "x11")
-                       ("XDG_SESSION_DESKOP" . "stumpwm")
-                       ("XDG_CURRENT_DESKTOP" . "stumpwm")
-                       ("GTK_THEME" . "Adwaita:dark")))
-     (service home-bash-service-type
-              (home-bash-configuration
-               (guix-defaults? #f)
-               (aliases '(("grep" . "grep --color=auto")
-                          ("ls"   . "ls -p --color=auto")
-                          ("ll"   . "ls -l")
-                          ("la"   . "ls -la")))
-               (bashrc
-                (list (local-file "dot-bashrc.sh"
-                                  #:recursive? #t)))
-               (bash-profile
-                (list (local-file "dot-bash_profile.sh"
-                                  #:recursive? #t)))))))))
+    (append (list
+             ;; Enable pipewire audio
+             (service home-pipewire-service-type)
+
+             ;; Enable bluetooth connections to be handled properly
+             ;; bluetooth service only currently available at system level.
+             (service home-dbus-service-type) ;; for bluetooth --> system
+
+             ;; Streaming profile service
+             (service home-streaming-service-type)
+
+             ;; Monitor battery levels
+             (service home-batsignal-service-type)
+
+             ;; Udiskie for auto-mounting
+             (service home-udiskie-service-type)
+
+             ;; XDG files configuration
+             ;; (service home-xdg-local-files-service-type)
+
+             ;; Local files symlinks configuration
+             (simple-service 'home-impure-symlinks-dotfiles
+                             home-impure-symlinks-service-type
+                             `( ;; guix Configuration Scaffolding
+                               (".config/guix/channels.scm"
+                                ,(string-append
+                                  *home-path*
+                                  "config/system/channels.scm"))
+
+                               ;; StumpWM XDG Configuration Scaffolding
+                               (".config/stumpwm/config"
+                                ,(string-append
+                                  *home-path*
+                                  "files/stumpwm/config.lisp"))
+
+                               (".config/stumpwm/libraries"
+                                ,(string-append
+                                  *home-path*
+                                  "files/stumpwm/libraries"))
+
+                               (".config/stumpwm/modules"
+                                ,(string-append
+                                  *home-path*
+                                  "files/stumpwm/modules"))
+
+                               ;; Xorg Configuration Scaffolding
+                               (".Xdefaults"
+                                ,(string-append
+                                  *home-path*
+                                  "files/xorg/dot-Xdefaults"))
+
+                               (".Xresources"
+                                ,(string-append
+                                  *home-path*
+                                  "files/xorg/dot-Xresources"))
+
+                               (".icons"
+                                ,(string-append
+                                  *home-path*
+                                  "files/xorg/dot-icons"))
+
+                               (".config/xorg/start-xterm.sh"
+                                ,(string-append
+                                  *home-path*
+                                  "files/xorg/start-xterm.sh"))
+
+                               ;; Emacs Configuration Scaffolding
+                               (".config/emacs"
+                                ,(string-append
+                                  *home-path*
+                                  "files/emacs"))
+
+                               ;; Lem Configuration Scaffolding
+                               (".config/lem"
+                                ,(string-append
+                                  *home-path*
+                                  "files/lem"))
+
+                               ;; Nyxt Configuration Scaffolding
+                               (".config/nyxt"
+                                ,(string-append
+                                  *home-path*
+                                  "files/nyxt"))
+
+                               (".local/share/nyxt/extensions"
+                                ,(string-append
+                                  *home-path*
+                                  "files/nyxt/extensions"))))
+
+             ;; Set environment variables for every session
+             ;; (service home-env-vars-configuration-service-type)
+             (simple-service 'env-vars home-environment-variables-service-type
+                             '(("LC_COLLATE" . "C")
+                               ("EDITOR" . "emacs")
+                               ("BROWSER" . "nyxt")
+                               ("XDG_SESSION_TYPE" . "x11")
+                               ("XDG_SESSION_DESKOP" . "stumpwm")
+                               ("XDG_CURRENT_DESKTOP" . "stumpwm")
+                               ("GTK_THEME" . "Adwaita:dark")))
+
+             (service home-bash-service-type
+                      (home-bash-configuration
+                       (guix-defaults? #f)
+                       (aliases '(("grep" . "grep --color=auto")
+                                  ("ls"   . "ls -p --color=auto")
+                                  ("ll"   . "ls -l")
+                                  ("la"   . "ls -la")))
+                       (bashrc
+                        (list (local-file "dot-bashrc.sh"
+                                          #:recursive? #t)))
+                       (bash-profile
+                        (list (local-file "dot-bash_profile.sh"
+                                          #:recursive? #t))))))
+            %base-home-services))))
 
 ;; Enable Home
-logoraz-home
+stumpwm-home
