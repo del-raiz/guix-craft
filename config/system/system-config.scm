@@ -91,7 +91,7 @@
          (type "vfat"))
         (file-system
          (mount-point "/")
-         (device (uuid "c0ffc6f4-dab7-4efc-8cdd-3e9d727b91ab" 'ext4))
+         (device (uuid "63be73df-47a0-4350-a592-e0541bece0bf" 'ext4))
          (type "ext4"))))
 
 (define guix-os
@@ -119,7 +119,7 @@
    (swap-devices (list (swap-space
                         (target
                          (uuid
-			  "b547f9c1-9a69-4c63-9c55-edc2736bf504")))))
+			  "16d2cf76-fc27-4140-a980-feff050e1018")))))
 
    ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
    (file-systems (append
