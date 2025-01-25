@@ -205,6 +205,11 @@
                         ,(string-append
                           *home-path*
                           "files/emacs"))
+                       ;; Lem Configuration Scaffolding
+                       (".config/lem"
+                        ,(string-append
+                          *home-path*
+                          "files/lem"))
                        ;; Nyxt Configuration Scaffolding
                        (".config/nyxt"
                         ,(string-append
@@ -215,14 +220,13 @@
                           *home-path*
                           "files/nyxt/extensions"))))
      (simple-service 'env-vars home-environment-variables-service-type
-                     '(("EDITOR" . "emacs")
+                     '(("LC_COLLATE" . "C")
+                       ("EDITOR" . "emacs")
                        ("BROWSER" . "nyxt")
-                       ;; ("OPENER" . "opener.sh")
                        ("XDG_SESSION_TYPE" . "x11")
                        ("XDG_SESSION_DESKOP" . "stumpwm")
                        ("XDG_CURRENT_DESKTOP" . "stumpwm")
-                       ;; ("XDG_DOWNLOAD_DIR" . "/home/logoraz/Downloads")
-                       ("GUILE_WARN_DEPRECATED" . "detailed")))
+                       ("GTK_THEME" . "Adwaita:dark")))
      (service home-bash-service-type
               (home-bash-configuration
                (guix-defaults? #f)
