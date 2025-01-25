@@ -79,7 +79,7 @@
 (define logoraz-user-account
   (list (user-account
          (name "logoraz")
-         (comment "Erik P. Almaraz")
+         (comment "Crafter Bee")
          (group "users")
          (home-directory "/home/logoraz")
          (supplementary-groups '("wheel" "netdev" "audio" "video" "lp")))))
@@ -91,7 +91,7 @@
          (type "vfat"))
         (file-system
          (mount-point "/")
-         (device (uuid "63be73df-47a0-4350-a592-e0541bece0bf" 'ext4))
+         (device (uuid "872f93f3-bcb4-4907-bb4c-d6002496d3a8" 'ext4))
          (type "ext4"))))
 
 (define guix-os
@@ -119,7 +119,7 @@
    (swap-devices (list (swap-space
                         (target
                          (uuid
-			  "16d2cf76-fc27-4140-a980-feff050e1018")))))
+			  "08b16346-aa6b-4744-9856-6070d78e38ca")))))
 
    ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
    (file-systems (append
