@@ -3,7 +3,6 @@
 # Emacs
 /files/emacs/etc/
 /files/emacs/var/
-/files/emacs/elisp/
 
 # Lem
 /files/lem/history/
