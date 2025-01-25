@@ -1,0 +1,84 @@
+#+title:    Del Emacs Configuration
+#+author:  Erik P. Almaraz
+#+email:   erikalmaraz@fastmail.com
+#+language: en
+#+options:  ':t toc:nil author:t email:t num:t
+#+startup:  content indent
+
+* Schema of Del Emacs Configuration
+
+Wily Emacs is a complete redesign of my Literate configuration, but based on a
+modular approach and written in pure Emacs Lisp.  This approach is inspired by both
+[[https://git.sr.ht/~protesilaos/dotfiles/tree/master/item/emacs/.emacs.d][protesilaos']] Emacs configration and [[https://github.com/SystemCrafters/crafted-emacs][crafted-emacs]]. Eventually, as I build it out
+further...
+
+** Overview
+
+- =early-init.el= :: /Optimizations for starting up Emacs and setting the basics
+   (evironment variables etc.)./
+
+  + This is the first file that Emacs first reads when staring up.  It should
+    contain code that does not depend on any package or the proportions of the
+    Emacs frame.  Instead, it is where the following occurs:
+
+    + Set up the parameters of the initial and all future frames.
+
+    + Optimize the early initialization phase to speed up startup time.
+
+    + Define functions that test the current environment and assign global
+      variables to be used elsewhere throught the config for appropriate
+      configuration.
+
+    + Guide the startup process to run as expect, no screen flickers, frame
+      resizing, color flashing etc.
+
+- =init.el= :: /Defines foundational blocks of my system and loads the individual
+  configuration modules./
+
+  + This is the main configuration file that Emacs uses.  Wily Emacs defines some
+    user options (tbd) and then proceeds to handle the substantive part of
+    configuration.  Precisely:
+
+    + Make the =custom-file= disposable since I consider persistent configurations
+      defined outside of my intended design to be problematic.
+
+    + Register =elisp/= and =modules/= in the Emacs =load-path=. Read further below to
+      what these directories contain.
+
+    + Load all the modules of my setup in the appropriate order.
+
+    + Setup/configure Emacs package management (either =package.el= or =straight.el=)
+
+    + Define Emacs Lisp language extensions (Macros) that are used throughout my
+      setup, more to come on these as I build this system out...
+
+- =modules= *directory* :: /Includes all my configuration modules - these simply
+  tweak packages and are not meant to define extra functionality./
+
+  + This is where I store all the individual components of my Emacs setup. The
+    directory is a subdirectory of =~/.config/emacs/=. All files are prefixed with
+    =wily=, followed by the word that broadly describes their scope of application.
+    Each module consists of ordinary Elisp (with exception to =use-package=
+    syntactic sugar) and a final call to =provide= which sets provides the set of
+    configurations as a /feature/ that can then be loaded via =require= from the
+    =init.el=.  What Emacs calls a "feature" is, in essence a variable whose value
+    is the entirety of the file that has a =provide= call to it. Features are
+    symbols that are named after the file name minus its file type extension.
+
+    Modules are intended only for configuration purposes. They do not define any
+    major variables/functions.
+
+- =elisp= *directory* :: /Custom packages & elisp tools/language extensions./
+
+  + This directory is also a subdirectory of =~/.config/emacs/=, and is where I
+    keep all custom elisp code that individual modules can use. The contents of
+    this directory can be understood as "packages" and are currently experiments.
+
+- =guile= *directory* :: /Custom packages written in Guile (scheme) for use and
+   integration with Emacs./
+
+  + This directory is also a subdirectory of =~/.config/emacs/=, and is where I
+    keep all custom guile code that someday can hopefully be integrated with
+    Emacs or used with Emacs. This is still an experiment.
+
+** Details

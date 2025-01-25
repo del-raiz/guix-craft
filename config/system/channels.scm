@@ -1,5 +1,8 @@
-;;; Define Channels
-(define guix-channel
+;;; Note this file is not to be edited
+;;; Contents should be copied from guixos-channels.scm
+(use-modules (guix channels))
+
+(define %guix-channel
   (channel
    (name 'guix)
    (url "https://git.savannah.gnu.org/git/guix.git")
@@ -9,7 +12,7 @@
      (openpgp-fingerprint
       "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))))
 
-(define nonguix-channel
+(define %nonguix-channel
   (channel
    (name 'nonguix)
    (url "https://gitlab.com/nonguix/nonguix")
@@ -19,7 +22,7 @@
      (openpgp-fingerprint
       "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
 
-(define flatwhatson-channel
+(define %flatwhatson-channel
   (channel
    (name 'flat)
    (url "https://github.com/flatwhatson/guix-channel.git")
@@ -29,7 +32,7 @@
      (openpgp-fingerprint
       "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490")))))
 
-(define guixrus-channel
+(define %guixrus-channel
   (channel
    (name 'guixrus)
    (url "https://git.sr.ht/~whereiseveryone/guixrus")
@@ -39,7 +42,7 @@
      (openpgp-fingerprint
       "CD2D 5EAA A98C CB37 DA91  D6B0 5F58 1664 7F8B E551")))))
 
-(define rde-channel
+(define %rde-channel
   (channel
   (name 'rde)
   (url "https://git.sr.ht/~abcdw/rde")
@@ -50,18 +53,17 @@
       (openpgp-fingerprint
         "2841 9AC6 5038 7440 C7E9  2FFA 2208 D209 58C1 DEB0")))))
 
-(define aadcg-channel
+(define %aadcg-channel
   (channel
    (name 'aadcg)
    (url "https://github.com/aadcg/aadcg-guix-channel")))
 
-;; TODO - Consider creating my own channel:
-;; Ref: https://guix.gnu.org/cookbook/en/html_node/Channels.html
-;; https://guix.gnu.org/manual/en/html_node/Creating-a-Channel.html#Creating-a-Channel
-(define logoraz-channels
-  (list nonguix-channel
-        guix-channel))
+
+(define %guixos-channels
+  (append (list %nonguix-channel
+                %guix-channel)
+          %default-channels))
+
 
 ;; Instantiate selected channels
-(append logoraz-channels
-        %default-channels)
+%guixos-channels
