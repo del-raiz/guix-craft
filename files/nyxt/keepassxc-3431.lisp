@@ -5,7 +5,7 @@
 ;;; copy-username or copy-password has been invoked first
 
 (in-package #:nyxt/mode/password)
-
+;; in mode/password
 (define-command save-new-password-dev (&optional (buffer (current-buffer)))
   "Save password to password interface."
   (password-debug-info)
@@ -37,6 +37,7 @@
     (t (echo-warning "Password manager ~s does not support saving passwords."
                      (string-downcase
                       (class-name (class-of (password-interface buffer))))))))
+
 
 ;; Currently not working - how to override existing method? Or change existing method.
 ;; (defmethod password::execute :before ((password-interface password:keepassxc-interface) (arguments list)

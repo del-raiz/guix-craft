@@ -74,7 +74,6 @@
 (load "~/.config/stumpwm/modules/modeline.lisp")
 
 ;; Start the mode line
-;; TODO: Put in modeline module?
 (when *initializing*
   (mode-line))
 
