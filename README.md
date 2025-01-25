@@ -179,10 +179,9 @@ notifications...
    
 ## References:
 
-  - [Crafting a Minimal Sway Environment in Guix](https://systemcrafters.net/live-streams/september-27-2024/)
+  - [StumpWM Configuration Inspiration](https://config.phundrak.com/stumpwm)
   - [How to Organize Your Guix Config](https://systemcrafters.net/craft-your-system-with-guix/how-to-organize-your-config/)
-
   - [Configuring Rational Emacs with Guix Home](https://systemcrafters.net/live-streams/july-8-2022/)
-  - TBD
+  - [Xorg Response Lag Solution](https://gitlab.com/nonguix/nonguix/-/issues/212)
   - TBD
   - TBD

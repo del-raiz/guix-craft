@@ -62,7 +62,7 @@
 (defvar *my-applications-keymap*
   (let ((key-map (make-sparse-keymap)))
     (define-key key-map (kbd "x") "exec ~/.config/xorg/start-xterm.sh")
-    (define-key key-map (kbd "n") "exec ~/.config/nyxt/start-nyxt.sh")
+    (define-key key-map (kbd "n") "exec nyxt")
     (define-key key-map (kbd "l") "exec lem")
     (define-key key-map (kbd "e") "exec emacs")
     (define-key key-map (kbd "i") "exec icecat")
