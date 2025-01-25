@@ -1,9 +1,10 @@
-;;;; completions.lisp
 ;;; ref - @vindarel (https://github.com/vindarel/lem-init)
 
-(uiop:define-package :config/completions
+(defpackage config/completions
   (:use :cl :lem))
+
 (in-package :config/completions)
+
 
 ;; Choose the position of the completion prompt (new in May, 2024)
 (setf lem-core::*default-prompt-gravity* :bottom-display)

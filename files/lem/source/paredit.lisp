@@ -1,10 +1,11 @@
-;;;; paredit.lisp
 ;;; Borrowed from @gavinok (https://github.com/Gavinok/.lem)
 
-(uiop:define-package :config/paredit
+(defpackage config/paredit
   (:use :cl :lem)
   (:export))
+
 (in-package :config/paredit)
+
 
 (add-hook *find-file-hook*
           (lambda (buffer)

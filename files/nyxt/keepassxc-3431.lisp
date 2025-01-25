@@ -1,5 +1,6 @@
-;;;; password-dev.lisp
+(in-package #:nyxt/mode/password)
 
+;;; Associated with GitHub [Issue #3431]
 ;;; Fix bug with save-new-password, fails to connect to database unless ether
 ;;; copy-username or copy-password has been invoked first
 

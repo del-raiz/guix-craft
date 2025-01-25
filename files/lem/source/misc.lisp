@@ -1,8 +1,8 @@
-;;;; misc.lisp
-
-(uiop:define-package :config/misc
+(defpackage config/misc
   (:use :cl :lem))
+
 (in-package :config/misc)
+
 
 ;; Load Theme
 ;; (load-theme "decaf") ; default

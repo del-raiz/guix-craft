@@ -27,11 +27,7 @@
 ;;; Packages
 (define guile-packages
   (list guile-next ;;|--> gnu packages guile
-        guile-ares-rs ;;|--> gnu packages guile-xyz
-        guile-hoot
-        guile-websocket
-        guile-sdl2 ;;|--> gnu package sdl
-        sdl2))
+        guile-ares-rs)) ;;|--> gnu packages guile-xyz
 
 (define logoraz-packages
   (list font-hack ;;|--> gnu packages fonts
@@ -41,6 +37,8 @@
         font-google-noto
         font-google-noto-emoji
         font-google-noto-sans-cjk
+        lem
+        sdl2
         (latest-nyxt nyxt) ;;|--> gnu packages web-browsers :www-mail
         icecat             ;;|--> gnu packages gnuzilla
         keepassxc          ;;|--> gnu packages password-utils
