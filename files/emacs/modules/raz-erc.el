@@ -5,7 +5,7 @@
 ;; Commentary/References:
 
 (setq erc-server "irc.libera.chat"
-      erc-nick "loraz"
+      erc-nick "logoraz"
       erc-user-full-name "Erik Almaraz"
       erc-track-shorten-start 8
       ;;    erc-autojoin-channels-alist '(("irc.libera.chat" "#systemcrafters" "#emacs"))
@@ -36,8 +36,5 @@
   ;; :ensure t
   :hook (erc-mode . emojify-mode)
   :commands emojify-mode)
-
-(use-package 0x0)
-
 
 (provide 'raz-erc)

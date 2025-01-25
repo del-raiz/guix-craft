@@ -67,9 +67,6 @@
      ("CANCELLED" . "#5E81AC")))   ; ?
   (org-babel-lisp-eval-fn 'sly-eval "Configure Babel Programming Language Execution")
   :config
-  ;; Keep for reference
-  ;; (set-face-attribute 'org-headline-done nil :strike-through t)
-
   ;; Org Helper Hook Functions
   (defun raz/org-fonts-hkf ()
     "Hook function enabling Org faces/fonts."

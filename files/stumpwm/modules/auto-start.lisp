@@ -40,7 +40,7 @@
 ;;; UI Settings
 
 ;;; Set Wallpaper
-(run-shell-command "feh --bg-scale  ~/Pictures/wallpapers/desktop-bg.jpg")
+(run-shell-command "feh --bg-scale  ~/Pictures/wallpapers/sunset-mountain.jpg")
 
 ;;; Enable screen compositing
 (run-shell-command "picom")

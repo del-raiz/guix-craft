@@ -21,20 +21,34 @@
 (use-package sly
   ;; Enable sly IDE for Common Lisp
   :hook ((lisp-mode . sly-editing-mode))
-  :custom
-  (inferior-lisp-program (executable-find "sbcl")
-                         "Set default lisp to Steel Bank Common Lisp.")
+  ;; :custom
+  ;; (inferior-lisp-program (executable-find "sbcl")
+  ;;                        "Set default lisp to Steel Bank Common Lisp.")
   :config
   ;; Invoke SLY with a negative prefix argument, M-- M-x sly,
   ;; and you can select a program from that list.
   (setq sly-lisp-implementations
-        `((sbcl (,(executable-find "sbcl")))))
+        `((sbcl (,(executable-find "sbcl")))
+          (ccl (,(executable-find "ccl")))
+          (clasp (,(executable-find "clasp")))))
+
+  (defun raz/stumpwm-sly-connect ()
+    "Auto connect to StumpWM slynk session -> port 4005."
+    (interactive)
+    ;;FIXME -> query if nyxt-slynk is running or has been started (unless ...)
+    (save-excursion (sly-connect "localhost" 4005)))
 
   (defun raz/nyxt-sly-connect ()
     "Auto connect to Nyxt slynk session, start via start-slynk Nyxt command -> port 4006."
     (interactive)
     ;;FIXME -> query if nyxt-slynk is running or has been started (unless ...)
     (save-excursion (sly-connect "localhost" 4006)))
+
+  (defun raz/chemscribe-sly-connect ()
+    "Auto connect to Nyxt slynk session, start via start-slynk Nyxt command -> port 4006."
+    (interactive)
+    ;;FIXME -> query if nyxt-slynk is running or has been started (unless ...)
+    (save-excursion (sly-connect "localhost" 4008)))
 
   ;; See: https://joaotavora.github.io/sly/#Loading-Slynk-faster
   (defun raz/sly-auto-connect ()

@@ -1,9 +1,0 @@
-# background transparent
-set default-bg "rgba(70,80,90,0.9)"
-
-# Disable for now...
-# revert color black to white vice versa
-# set recolor "true"
-# set recolor-darkcolor "rgba(242, 242, 242, 1)"
-# set recolor-lightcolor "rgba(40, 44, 52, 0.8)"
-# set recolor-keephue "true"

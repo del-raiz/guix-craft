@@ -26,7 +26,7 @@
 
 ;;; Set PATHs: modules & data directories, etc.
 
-;; Set StumpWM modules directory
+;; Set StumpWM modules directory - at system level!
 (set-module-dir (concat +guix-home-path+
                         "common-lisp/sbcl/"))
 

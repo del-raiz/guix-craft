@@ -15,22 +15,23 @@
 
 
 (use-package denote
-  :hook ((dired-mode . denote-dired-mode-in-directories)
+  :hook (;;(find-file . denote-link-buttonize-buffer)
+         (dired-mode . denote-dired-mode-in-directories)
          (denote-dired-mode . dired-hide-details-mode)
          (org-capture-mode . raz/denote-org-capture))
 
   :bind (("C-c n j" . raz/denote-journal)
          ("C-c n n" . denote))
   :init
-  (setq raz/denote--dir "~/Notes/denotes/")
+  (setq raz/denote--dir "~/Documents/denotes/")
   :custom
   (denote-directory (expand-file-name raz/denote--dir))
   (denote-dired-directories (list
                              denote-directory
-                             (expand-file-name "inbox"     denote-directory)
-                             (expand-file-name "research"  denote-directory)
+                             (expand-file-name "inbox" denote-directory)
+                             (expand-file-name "research" denote-directory)
                              (expand-file-name "reference" denote-directory)
-                             (expand-file-name "trash"     denote-directory)))
+                             (expand-file-name "trash" denote-directory)))
   (denote-known-keywords '("emacs"
                            "ideas"
                            "journal"
@@ -68,8 +69,6 @@
      (denote--title-prompt)
      '("journal"))))
 
-;; WIP
-(use-package consult-denote)
-
+
 
 (provide 'raz-denote)

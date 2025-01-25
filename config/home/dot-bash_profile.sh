@@ -6,4 +6,4 @@ if [ -L ~/.guix-profile ]; then
 fi
 
 # StumpWM - Set title bar of GTK applications
-# export GTK_THEME=Adwaita:dark
+export GTK_THEME=Adwaita:dark
