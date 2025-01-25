@@ -55,7 +55,14 @@
 ;; (load-theme 'kanagawa t)
 ;; https://github.com/tinted-theming/base16-emacs
 
-(use-package nerd-icons)
+(use-package nerd-icons
+  :config
+  ;; Set "lisp" extensions/lisp-mode to Common Lisp Icon, instead of Scheme Icon...
+  (add-to-list 'nerd-icons-extension-icon-alist
+               '("lisp" nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver))
+
+  (add-to-list 'nerd-icons-mode-icon-alist
+               '(lisp-mode nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver)))
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -68,18 +75,9 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; (load-theme 'doom-one t)
-  ;; (load-theme 'doom-nord t)
-  ;; (load-theme 'doom-spacegrey t)
   (load-theme 'doom-tomorrow-night t)
-
-
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
@@ -105,7 +103,7 @@
     (raz/set-face-attribute (car face) (cdr face))))
 
 
-;;; Editing/IDE Package configurations
+;;; Editing
 (use-package undo-tree
   :diminish undo-tree-mode
   :custom
@@ -116,25 +114,9 @@
   (setq kill-do-not-save-duplicates t)
   (global-undo-tree-mode))
 
-(use-package paredit
-  :diminish paredit-mode
-  :hook ((eval-expression-minibuffer-setup
-          lisp-interaction-mode
-          emacs-lisp-mode
-          lisp-mode
-          scheme-mode
-          org-mode) . enable-paredit-mode))
-
 (use-package ws-butler
   :diminish ws-butler-mode
   :hook ((text-mode prog-mode) . ws-butler-mode))
-
-(use-package magit
-  :defer 5
-  :custom
-  (magit-clone-always-transient nil)
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  (vc-follow-symlinks t))
 
 ;;; Workflow frame/tab workspaces
 (use-package beframe
@@ -148,7 +130,15 @@
 (use-package ace-window
   :bind ("M-o" . 'ace-window))
 
-
+(use-package pinentry
+  :bind ("C-c p" . raz/start-pinentry)
+  :config
+  (defun raz/start-pinentry ()
+    "Start Emacs pinentry server."
+    (interactive)
+    (message "Starting Emacs pinentry server.")
+    (pinentry-start)))
+
 
 
 (provide 'raz-base-ext)

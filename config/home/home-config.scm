@@ -14,6 +14,7 @@
                      gstreamer video compton image-viewers linux music
                      gnucash gimp inkscape graphics compression version-control
                      guile guile-xyz emacs emacs-xyz sdl compression
+                     text-editors
                      ;; added from system
                      lisp lisp-xyz wm xorg xdisorg freedesktop
                      ssh cups suckless networking package-management)
@@ -27,11 +28,8 @@
 ;;; Packages
 (define guile-packages
   (list guile-next ;;|--> gnu packages guile
-        guile-ares-rs ;;|--> gnu packages guile-xyz
-        guile-hoot
-        guile-websocket
-        guile-sdl2 ;;|--> gnu package sdl
-        sdl2))
+        guile-colorized
+        guile-ares-rs)) ;;|--> gnu packages guile-xyz
 
 (define logoraz-packages
   (list font-hack ;;|--> gnu packages fonts
@@ -41,6 +39,8 @@
         font-google-noto
         font-google-noto-emoji
         font-google-noto-sans-cjk
+        lem
+        sdl2
         (latest-nyxt nyxt) ;;|--> gnu packages web-browsers :www-mail
         icecat             ;;|--> gnu packages gnuzilla
         keepassxc          ;;|--> gnu packages password-utils
@@ -90,6 +90,7 @@
          emacs-marginalia
          emacs-beframe
          emacs-denote
+         emacs-consult-denote
          emacs-magit
          emacs-vterm
          emacs-guix
@@ -98,6 +99,7 @@
          emacs-mbsync
          emacs-org-superstar
          emacs-org-appear
+         emacs-0x0
          emacs-erc-hl-nicks
          emacs-erc-image
          emacs-emojify))
@@ -164,7 +166,9 @@
    (services
     (list
      (service home-pipewire-service-type)
+
      (service home-dbus-service-type) ;; for bluetooth --> system
+
      (simple-service 'home-impure-symlinks-dotfiles
                      home-impure-symlinks-service-type
                      `( ;; guix Configuration Scaffolding
@@ -172,59 +176,89 @@
                         ,(string-append
                           *home-path*
                           "config/system/channels.scm"))
+
                        ;; StumpWM XDG Configuration Scaffolding
                        (".config/stumpwm/config"
                         ,(string-append
                           *home-path*
                           "files/stumpwm/config.lisp"))
+
                        (".config/stumpwm/libraries"
                         ,(string-append
                           *home-path*
                           "files/stumpwm/libraries"))
+
                        (".config/stumpwm/modules"
                         ,(string-append
                           *home-path*
                           "files/stumpwm/modules"))
+
                        ;; Xorg Configuration Scaffolding
                        (".Xdefaults"
                         ,(string-append
                           *home-path*
                           "files/xorg/dot-Xdefaults"))
+
                        (".Xresources"
                         ,(string-append
                           *home-path*
                           "files/xorg/dot-Xresources"))
+
                        (".icons"
                         ,(string-append
                           *home-path*
                           "files/xorg/dot-icons"))
+
                        (".config/xorg/start-xterm.sh"
                         ,(string-append
                           *home-path*
                           "files/xorg/start-xterm.sh"))
+
                        ;; Emacs Configuration Scaffolding
                        (".config/emacs"
                         ,(string-append
                           *home-path*
                           "files/emacs"))
+
+                       ;; Lem Configuration Scaffolding
+                       (".config/lem"
+                        ,(string-append
+                          *home-path*
+                          "files/lem"))
+
                        ;; Nyxt Configuration Scaffolding
                        (".config/nyxt"
                         ,(string-append
                           *home-path*
                           "files/nyxt"))
+
                        (".local/share/nyxt/extensions"
                         ,(string-append
                           *home-path*
                           "files/nyxt/extensions"))))
+
      (simple-service 'env-vars home-environment-variables-service-type
-                     '(("EDITOR" . "emacs")
+                     '( ;; Sort hidden (dot) files first in ls listings
+                       ("LC_COLLATE" . "C")
+
+                       ;; Set Emacs as editor
+                       ("EDITOR" . "emacs")
+
+                       ;; Set the default
                        ("BROWSER" . "nyxt")
-                       ;; ("OPENER" . "opener.sh")
-                       ("XDG_SESSION_TYPE" . "x11")
-                       ("XDG_SESSION_DESKOP" . "stumpwm")
+
+                       ;; Set GnuPG Config Dir env
+                       ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
+
+                       ;; Set x11-specific environment variables
+                       ("XDG_SESSION_TYPE"    . "x11")
+                       ("XDG_SESSION_DESKOP"  . "stumpwm")
                        ("XDG_CURRENT_DESKTOP" . "stumpwm")
-                       ;; ("XDG_DOWNLOAD_DIR" . "/home/logoraz/Downloads")
-                       ("GUILE_WARN_DEPRECATED" . "detailed")))
+                       ("RTC_USE_PIPEWIRE"    . "true")
+
+                       ;; GTK Theme
+                       ("GTK_THEME" . "Adwaita:dark")))
+
      (service home-bash-service-type
               (home-bash-configuration
                (guix-defaults? #f)

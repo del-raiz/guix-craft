@@ -76,32 +76,15 @@
   (recentf-mode))
 
 
-;;; Coding/Editing Defaults
-
-;; .dir-local variables for development projects
-(setq enable-local-eval nil)
-(setq enable-local-variables nil)
-
+;;; Editing Defaults
 (set-default-coding-systems 'utf-8)
 (setq-default global-auto-revert-non-file-buffers t)
-(setq-default indent-tabs-mode nil) ; use spaces instead of tabs
-(setq-default ;cursor-type 'bar
-
-              large-file-warning-threshold 100000000
+(setq-default large-file-warning-threshold 100000000
               find-file-visit-truename t)
+
 (global-auto-revert-mode 1)
 (delete-selection-mode)
 (column-number-mode 1)
-
-(use-package display-fill-column-indicator
-  ;; TODO: Customize theme color for this element -> via ':config' keyword
-  :diminish
-  ;; Only activate for lisp-mode -> stumpwm-contrib preference
-  :hook ((lisp-mode . display-fill-column-indicator-mode)
-         (scheme-mode . display-fill-column-indicator-mode))
-  :custom
-  (fill-column 94)
-  (display-fill-column-indicator-column fill-column))
 
 (defun raz/switch-to-minibuffer ()
   "Switch to minibuffer window."
@@ -112,44 +95,12 @@
 
 (bind-key "C-c o" 'raz/switch-to-minibuffer)
 
-(use-package eldoc
-  :defer t
-  :diminish eldoc-mode)
-
 ;;Dired setup
 (use-package dired-x
   ;; Set dired-x buffer-local variables here.  For example:
   ;; (dired-omit-mode 1)
   :disabled
   :after dired)
-
-(use-package ediff
-  :defer t
-  :custom
-  (ediff-split-window-function 'split-window-horizontally)
-  (ediff-window-setup-function 'ediff-setup-windows-plain)
-  :config
-  ;; Save & Restore Window configuration
-  ;; https://www.emacswiki.org/emacs/EdiffMode
-  (add-hook
-   'ediff-load-hook
-   (lambda ()
-     (add-hook 'ediff-before-setup-hook
-               (lambda ()
-                 (setq ediff-saved-window-configuration
-                       (current-window-configuration))))
-     (let ((restore-window-configuration
-            (lambda ()
-              (set-window-configuration ediff-saved-window-configuration))))
-       (add-hook 'ediff-quit-hook
-                 restore-window-configuration
-                 'append)
-       (add-hook 'ediff-suspend-hook
-                 restore-window-configuration
-                 'append)))))
-
-
-
 
 
 (provide 'raz-base-core)

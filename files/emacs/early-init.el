@@ -11,6 +11,9 @@
 ;; PATHs, Environment & Configuration Variables
 ;;
 
+;; Set the `user-emacs-directory` to a writeable path
+(setq user-emacs-directory "~/.cache/emacs")
+
 ;; Set GUIX packages to Emacs Load Path
 (defvar raz/guix-emacs-packages-path
   (expand-file-name "~/.guix-home/profile/share/emacs/site-lisp/")
@@ -117,10 +120,9 @@
 (setq frame-resize-pixelwise t)
 
 (setq raz/custom-frame-alist
-      '(;;(alpha-background . 85) ; doesn't work on X11
-        ;;(undecorated . t)
-        ;;(maximized . t)
-        (alpha . (85 . 85))
+      '((alpha . (90 90))
+        ;;(alpha-background . 85) ; works only for emacs-pgtk
+        (undecorated . t)
         (use-frame-synchronization . t)))
 
 (setq initial-frame-alist
