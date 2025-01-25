@@ -55,7 +55,14 @@
 ;; (load-theme 'kanagawa t)
 ;; https://github.com/tinted-theming/base16-emacs
 
-(use-package nerd-icons)
+(use-package nerd-icons
+  :config
+    ;; Set "lisp" extensions/lisp-mode to Common Lisp Icon, instead of Scheme Icon...
+  (add-to-list 'nerd-icons-extension-icon-alist
+               '("lisp" nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver))
+
+  (add-to-list 'nerd-icons-mode-icon-alist
+               '(lisp-mode nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver)))
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -68,18 +75,11 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
   ;; (load-theme 'doom-one t)
-  ;; (load-theme 'doom-nord t)
-  ;; (load-theme 'doom-spacegrey t)
   (load-theme 'doom-tomorrow-night t)
-
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
+
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 

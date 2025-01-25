@@ -11,6 +11,9 @@
 ;; PATHs, Environment & Configuration Variables
 ;;
 
+;; Set the `user-emacs-directory` to a writeable path
+(setq user-emacs-directory "~/.cache/emacs")
+
 ;; Set GUIX packages to Emacs Load Path
 (defvar raz/guix-emacs-packages-path
   (expand-file-name "~/.guix-home/profile/share/emacs/site-lisp/")

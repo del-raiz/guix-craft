@@ -23,11 +23,12 @@
 (defvar *raz-etc-directory* (expand-file-name "etc/" user-emacs-directory)
   "Default etc directory.")
 
-(defvar *raz-elisp-directory* (expand-file-name "elisp/" user-emacs-directory)
+(defvar *xdg-config-directory* (expand-file-name "emacs" "~/.config"))
+
+(defvar *raz-elisp-directory* (expand-file-name "elisp/" *xdg-config-directory*)
   "Default Emacs Lisp directory")
 
-(defvar *raz-modules-directory* (expand-file-name "modules/"
-                                                  user-emacs-directory)
+(defvar *raz-modules-directory* (expand-file-name "modules/" *xdg-config-directory*)
   "Default Emacs Modules directory.")
 
 ;; Add the elisp & modules directories to the load path
