@@ -41,6 +41,8 @@
 
 
 ;;; Common Lisp Servers (Slynk & Swank)
+(require :micros)
+
 (defvar *stumpwm-port* 4005
   "Default port to establish a connection to either slynk or micros")
 

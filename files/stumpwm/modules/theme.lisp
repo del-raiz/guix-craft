@@ -23,11 +23,14 @@
                                                  "/.local/share/fonts/"
                                                  "font-cache.sexp"))
 (xft:cache-fonts)
-(set-font `(,(make-instance ; system
+(set-font `(,(make-instance
               'xft:font :family "Hack"
                         :subfamily "Regular" :size 11 :antialias t)
-            ,(make-instance ; system
+            ,(make-instance
               'xft:font :family "JetBrains Mono"
+                        :subfamily "Regular" :size 11 :antialias t)
+            ,(make-instance
+              'xft:font :family "FontAwesome"
                         :subfamily "Regular" :size 11 :antialias t)))
 
 ;;; Colors

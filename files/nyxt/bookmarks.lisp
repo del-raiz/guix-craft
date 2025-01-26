@@ -10,6 +10,7 @@
 (:url "https://stumpwm.github.io/git/stumpwm-git.html#Top" :title "StumpWM Manual: Top" :date "2025-01-26T15:30:41.643337Z" :tags ("Craft"))
 (:url "https://systemcrafters.store/supporters/sign_in" :title "System Crafters" :date "2025-01-07T01:54:09.481006Z" :tags ("Craft"))
 (:url "https://toys.whereis.みんな/" :title "Toys/Webring for GNU Guix channels" :date "2024-07-25T02:28:02.443124Z" :tags ("Guix"))
+(:url "https://www.artstation.com/artwork/XB4DQn" :title "ArtStation - Away In Silence" :date "2025-01-26T19:53:40.675884Z" :tags ("Craft"))
 (:url "https://www.blueletterbible.org/esv/jhn/1/1/s_998001" :title "John 1 (ESV) - In the beginning was the" :date "2025-01-06T05:46:16.147413Z" :tags ("Philo"))
 (:url "https://www.cliki.net/naming+conventions" :title "CLiki: Naming conventions" :date "2025-01-25T23:53:46.085401Z" :tags ("Lisp2"))
 )

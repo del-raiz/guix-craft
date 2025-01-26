@@ -41,8 +41,8 @@
 
 ;;; Packages
 (define %guile-packages
-  (list guile-next                 ;;|--> gnu packages guile
-        guile-ares-rs))            ;;|--> gnu packages guile-xyz
+  (list guile-next
+        guile-ares-rs))
 
 (define %cl-packages
   (list ccl
@@ -52,18 +52,19 @@
         cl-slime-swank))
 
 (define %logoraz-packages
-  (list picom                      ;;|--> gnu packages compton
-        feh                        ;;|--> gnu packages image-viewers
+  (list picom                      ;;|--> StumpWM Tools
+        feh
+        libnotify
 
         ;; Mail
         mu
-        isync                      ;;|--> gnu packages mail
+        isync
         msmtp
 
         ;; Flatpak & XDG Utilities
         flatpak
         xdg-desktop-portal
-        xdg-utils ;;|--> gnu packages freedesktop
+        xdg-utils
         xdg-dbus-proxy
         shared-mime-info
         (list glib "bin")
@@ -77,7 +78,7 @@
         ;; bibata-cursor-theme
 
         ;; Fonts
-        font-hack                  ;;|--> gnu packages fonts
+        font-hack
         font-jetbrains-mono
         font-awesome
         font-fira-code
@@ -118,10 +119,10 @@
         zathura-pdf-mupdf
 
         ;; Applications
-        gnucash                    ;;|--> gnu packages gnucash
-        gimp                       ;;|--> gnu packages gimp
-        inkscape                   ;;|--> gnu packages inkscape
-        blender                    ;;|--> gnu packages graphics
+        gnucash
+        gimp
+        inkscape
+        blender
 
         ;; Utilities
         blueman                    ;;|--> gnu package networking
@@ -130,8 +131,8 @@
         trash-cli))
 
 (define %emacs-packages
-  (list  emacs                     ;;|--> gnu packages emacs
-         emacs-diminish            ;;|--> gnu packages emacs-xyz
+  (list  emacs
+         emacs-diminish
          emacs-delight
          emacs-nord-theme
          emacs-doom-themes
@@ -179,17 +180,25 @@
         sbcl-bordeaux-threads
         sbcl-cl-fad
         sbcl-clx-truetype
-        sbcl-stumpwm-ttf-fonts     ;;|--> gnu packages wm; :stumpwm-contrib/util
+        ;; stumpwm-contrib packages
+        sbcl-stumpwm-ttf-fonts     ;;|--> gnu packages wm;
         sbcl-stumpwm-kbd-layouts
         sbcl-stumpwm-swm-gaps
         sbcl-stumpwm-globalwindows
-        sbcl-stumpwm-cpu           ;;:stumpwm-contrib/modeline
+        sbcl-stumpwm-cpu
         sbcl-stumpwm-mem
         sbcl-stumpwm-wifi
         sbcl-stumpwm-battery-portable))
 
 
 ;;; home-environment
+(define %gosr (string-append "sudo guix system -L ~/dotfiles/"
+                             "reconfigure"
+                             "~/dotfiles/config/system/system-config.scm"))
+
+(define %gohr (string-append "guix home -L ~/dotfiles/"
+                             "reconfigure"
+                             "~/dotfiles/config/home/home-config.scm"))
 
 (define stumpwm-home
   (home-environment
@@ -230,10 +239,12 @@
              (service home-bash-service-type
                       (home-bash-configuration
                        (guix-defaults? #f)
-                       (aliases '(("grep" . "grep --color=auto")
+                       (aliases `(("grep" . "grep --color=auto")
                                   ("ls"   . "ls -p --color=auto")
                                   ("ll"   . "ls -l")
-                                  ("la"   . "ls -la")))
+                                  ("la"   . "ls -la")
+                                  ("gosr" . ,%gosr)
+                                  ("gohr" . ,%gohr)))
                        (bashrc
                         (list (local-file "dot-bashrc.sh"
                                           #:recursive? #t)))

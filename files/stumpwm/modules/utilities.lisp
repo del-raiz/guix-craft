@@ -47,3 +47,9 @@
 (defcommand lock-screen () ()
   "Screenlock command using slock - bound in keybindings under end-session map."
   (run-shell-command *screenlock-command*))
+
+
+;;; Experimental stumpwm-contrib packages (to trial)
+;; requires sbcl-xml-emitter and sbcl-dbus -> failing w/ error on sb-rotate-byte...
+;; (load-module "notify")
+;; (notify:notify-server-toggle)
