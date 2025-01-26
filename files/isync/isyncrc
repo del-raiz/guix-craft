@@ -1,0 +1,43 @@
+# isyncr file
+# See: https://fanpengkong.com/post/emacs-email/emacs-email/#headline-2
+#
+# This file is placed in XDG_CONFIG_HOME/isyncrc via Guix xdg-files service
+#
+# Initial Setup
+# > mkdir path/to/<Maildir> (~/.local/share/mu4e)
+# > mkdir path/to/<Maildir>/Fastmail
+# > mkdir path/to/<Maildir>/Fastmail/INBOX
+#
+# > cd path/to/<Maildir> (~/.local/share/mu4e)
+# > mbsync -a
+# > mu init --maildir=/home/loraz/.local/share/mu4e --my-address=erikalmaraz@fastmail.com
+# > mu index
+
+# Account Information
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User erikalmaraz@fastmail.com
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/Documents/moses/fastmail/app.gpg"
+TLSType IMAPS
+AuthMechs LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Remote Storage
+IMAPStore fastmail-remote
+Account fastmail
+
+# Local Storage: CREATE DIRECTORIES with mkdir -p <maildir>/Fastmail
+MaildirStore fastmail-local
+Path ~/.local/share/mu4e/Fastmail/
+Inbox ~/.local/share/mu4e/Fastmail/INBOX/
+SubFolders Verbatim
+
+Channel fastmail
+Far :fastmail-remote:
+Near :fastmail-local:
+Patterns *
+Create Both
+Expunge Both
+Sync All
+SyncState *

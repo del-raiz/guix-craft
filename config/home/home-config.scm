@@ -9,17 +9,20 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
+  ;; #:use-module (config home services environment)
   #:use-module (config home services home-impure-symlinks)
+  #:use-module (config home services xdg-files)
+  ;; #:use-module (config home services mutable-files)
   #:use-module (config home services streaming)
   #:use-module (config home services udiskie))
 
+;;TODO: cleanup/organize
 (use-package-modules fonts web-browsers gnuzilla password-utils gnupg mail
                      gstreamer video compton image-viewers linux music
                      gnucash gimp inkscape graphics image gnome gnome-xyz
                      guile guile-xyz emacs emacs-xyz sdl text-editors
                      shellutils pdf glib
                      lisp lisp-xyz wm
-                     ;; xorg xdisorg
                      freedesktop
                      ssh cups suckless networking package-management)
 
@@ -38,8 +41,8 @@
 
 ;;; Packages
 (define %guile-packages
-  (list guile-next      ;;|--> gnu packages guile
-        guile-ares-rs)) ;;|--> gnu packages guile-xyz
+  (list guile-next                 ;;|--> gnu packages guile
+        guile-ares-rs))            ;;|--> gnu packages guile-xyz
 
 (define %cl-packages
   (list ccl
@@ -49,12 +52,12 @@
         cl-slime-swank))
 
 (define %logoraz-packages
-  (list picom  ;;|--> gnu packages compton
-        feh    ;;|--> gnu packages image-viewers
+  (list picom                      ;;|--> gnu packages compton
+        feh                        ;;|--> gnu packages image-viewers
 
         ;; Mail
         mu
-        isync              ;;|--> gnu packages mail
+        isync                      ;;|--> gnu packages mail
         msmtp
 
         ;; Flatpak & XDG Utilities
@@ -115,20 +118,20 @@
         zathura-pdf-mupdf
 
         ;; Applications
-        gnucash  ;;|--> gnu packages gnucash
-        gimp     ;;|--> gnu packages gimp
-        inkscape ;;|--> gnu packages inkscape
-        blender  ;;|--> gnu packages graphics
+        gnucash                    ;;|--> gnu packages gnucash
+        gimp                       ;;|--> gnu packages gimp
+        inkscape                   ;;|--> gnu packages inkscape
+        blender                    ;;|--> gnu packages graphics
 
         ;; Utilities
-        blueman   ;;|--> gnu package networking
+        blueman                    ;;|--> gnu package networking
         udiskie
         network-manager-applet
         trash-cli))
 
 (define %emacs-packages
-  (list  emacs                    ;;|--> gnu packages emacs
-         emacs-diminish           ;;|--> gnu packages emacs-xyz
+  (list  emacs                     ;;|--> gnu packages emacs
+         emacs-diminish            ;;|--> gnu packages emacs-xyz
          emacs-delight
          emacs-nord-theme
          emacs-doom-themes
@@ -161,7 +164,7 @@
          emacs-emojify))
 
 (define %stumpwm-packages
-  (list sbcl-parse-float          ;;|--> gnu packages lisp-xyz
+  (list sbcl-parse-float           ;;|--> gnu packages lisp-xyz
         sbcl-local-time
         sbcl-cl-ppcre
         sbcl-zpng
@@ -185,35 +188,17 @@
         sbcl-stumpwm-wifi
         sbcl-stumpwm-battery-portable))
 
-;; (define %xorg-packages
-;;   (list xterm ;;|--> gnu packages xorg
-;;         transset
-;;         xhost
-;;         xset
-;;         xsetroot
-;;         xinput
-;;         xrdb
-;;         xrandr
-;;         xclip ;;|--> gnu packages xdisorg
-;;         xsel
-;;         xss-lock))
-
 (define *home-path* "/home/logoraz/dotfiles/")
 
 (define stumpwm-home
   (home-environment
-   ;; Below is the list of packages that will show up in your
-   ;; Home profile, under ~/.guix-home/profile.
    (packages (append
               %cl-packages
               %stumpwm-packages
-              ;; %xorg-packages
               %guile-packages
               %emacs-packages
               %logoraz-packages))
 
-   ;; Below is the list of Home services.  To search for available
-   ;; services, run 'guix home search KEYWORD' in a terminal.
    (services
     (append (list
              ;; Enable pipewire audio
@@ -232,13 +217,14 @@
              ;; Udiskie for auto-mounting
              (service home-udiskie-service-type)
 
-             ;; XDG files configuration
-             ;; (service home-xdg-local-files-service-type)
+             ;; XDG local files configuration
+             (service home-xdg-local-files-service-type)
 
-             ;; Local files symlinks configuration
+             ;; Mutable Local files symlinks configuration
+             ;; (service home-mutable-files-service-type)
              (simple-service 'home-impure-symlinks-dotfiles
                              home-impure-symlinks-service-type
-                             `( ;; guix Configuration Scaffolding
+                             `(;; guix Configuration Scaffolding
                                (".config/guix/channels.scm"
                                 ,(string-append
                                   *home-path*
