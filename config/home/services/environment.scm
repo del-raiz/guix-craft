@@ -1,13 +1,13 @@
 (define-module (config home services environment)
-  #:use-module (gnu home)          ; -
-  #:use-module (gnu home services) ; -
-  #:use-module (guix gexp)         ; -
+  #:use-module (gnu home)
+  #:use-module (gnu home services)
+  #:use-module (guix gexp)
 
   #:export (home-env-vars-configuration-service-type))
 
 
 ;; Edit setting the Home User
-(define %user-name "loraz")
+(define %user-name "logoraz")
 
 (define %gtk2-rc ".guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
 
@@ -22,35 +22,23 @@
   `( ;; Sort hidden (dot) files first in ls listings
     ("LC_COLLATE" . "C")
 
-    ;; Set Emacs as editor
-    ("EDITOR" . "emacs")
-    ("VISUAL" . "emacs")
+    ;; Set Default editor
+    ("EDITOR" . "lem")
+    ;; ("VISUAL" . "lem")
 
     ;; Set quotebrowser as the default
-    ("BROWSER" . "qutebrowser")
+    ("BROWSER" . "nyxt")
 
     ;; Set GnuPG Config Dir env
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
 
-    ;; Set wayland-specific environment variables
-    ("XDG_CURRENT_DESKTOP" . "sway")
-    ("XDG_SESSION_TYPE"    . "wayland")
-    ("RTC_USE_PIPEWIRE"    . "true")
-    ("SDL_VIDEODRIVER"     . "wayland")
-    ("MOZ_ENABLE_WAYLAND"  . "1")
-    ("CLUTTER_BACKEND"     . "wayland")
-    ("ELM_ENGINE"          . "wayland-egl")
-    ("ECORE_EVAS_ENGINE"   . "wayland-egl")
-    ("QT_QPA_PLATFORM"     . "wayland-egl")
-
-    ;; GTK & QT Theme
-    ("GTK_THEME"            . "Adwaita:dark")
-    ("QT_STYLE_OVERRIDE"    . "adwaita")
-    ("QT_QPA_PLATFORMTHEME" . "gtk3")
-    ;;TODO use gexp local-file to resolve this file...
-    ("GTK2_RC_FILES"        . ,(home-path %gtk2-rc))
+    ;; GTK Theme
+    ("GTK_THEME" . "Adwaita:dark")
 
     ;; Set XDG environment variables
+    ("XDG_SESSION_TYPE" . "x11")
+    ("XDG_SESSION_DESKOP" . "stumpwm")
+    ("XDG_CURRENT_DESKTOP" . "stumpwm")
     ("XDG_DOWNLOAD_DIR" . ,(home-path "Downloads"))
     ("XDG_PICTURES_DIR" . ,(home-path "Pictures/Screenshots"))))
 
