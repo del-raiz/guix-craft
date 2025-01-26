@@ -14,6 +14,11 @@
 
 (in-package :stumpwm)
 
+;; Load ~/common-lisp systems/packages
+(let ((asdf:*central-registry*
+        (cons #P"~/common-lisp/" asdf:*central-registry*)))
+  (asdf:load-system :micros))
+
 ;; Define Guix profiles
 (defconstant +guix-system-path+ "/run/current-system/profile/share/"
   "Define Guix System profile PATH.")

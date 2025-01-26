@@ -39,11 +39,26 @@
                             (format nil "kitty ~A" program)
                             "kitty")))))
 
+
 ;;; Common Lisp Servers (Slynk & Swank)
-;; Slynk (preferred --> stumpwm+slynk package
 (defvar *stumpwm-port* 4005
   "Default port to establish a connection to either slynk or micros")
 
+;; Lem connection to StumpWM
+(defcommand micros-start-server () ()
+  "Start a micros server for StumpWM/Lem."
+  (sb-thread:make-thread
+   (lambda ()
+     (micros:create-server :port *stumpwm-port* :dont-close t))
+   :name "Micros Server Process.")
+  (echo-string (current-screen) "Starting micros for StumpWM."))
+
+(defcommand micros-stop-server () ()
+  "Stop current micros server for StumpWM."
+  (micros:stop-server *stumpwm-port*)
+  (echo-string (current-screen) "Closing micros."))
+
+;; Emacs connection to StumpWM
 (defcommand slynk-start-server () ()
   "Start a slynk server for sly."
   (require :slynk)
@@ -58,6 +73,3 @@
   (slynk:stop-server *stumpwm-port*)
   (echo-string (current-screen) "Closing slynk."))
 
-;; TODO create commands to start swank server for Lem
-;; --> need cl-micros
-;; --> look into micros/swank...
