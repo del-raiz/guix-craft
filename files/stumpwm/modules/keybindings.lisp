@@ -71,6 +71,8 @@
     (define-key key-map (kbd "g") "exec gimp")
     (define-key key-map (kbd "p") "exec inkscape")
     (define-key key-map (kbd "b") "exec blender")
+    (define-key key-map (kbd "o") "exec obs")
+    (define-key key-map (kbd "z") "exec zathura")
     key-map))
 (define-key *root-map* (kbd "a") '*my-applications-keymap*)
 

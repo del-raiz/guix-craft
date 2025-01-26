@@ -8,6 +8,8 @@
 ;;; guix shell -m devtools-manifest.scm -- emacs
 ;;;
 
+(use-modules (gnu packages))
+
 (specifications->manifest
  '("gcc-toolchain"
    "binutils"

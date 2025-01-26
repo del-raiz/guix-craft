@@ -1,4 +1,6 @@
 ;;; Define Channels
+(use-modules (guix channels))
+
 (define guix-channel
   (channel
    (name 'guix)

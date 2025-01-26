@@ -12,7 +12,7 @@
   ;; #:use-module (config home services environment)
   #:use-module (config home services home-impure-symlinks)
   #:use-module (config home services xdg-files)
-  ;; #:use-module (config home services mutable-files)
+  #:use-module (config home services mutable-files)
   #:use-module (config home services streaming)
   #:use-module (config home services udiskie))
 
@@ -221,74 +221,74 @@
              (service home-xdg-local-files-service-type)
 
              ;; Mutable Local files symlinks configuration
-             ;; (service home-mutable-files-service-type)
-             (simple-service 'home-impure-symlinks-dotfiles
-                             home-impure-symlinks-service-type
-                             `(;; guix Configuration Scaffolding
-                               (".config/guix/channels.scm"
-                                ,(string-append
-                                  *home-path*
-                                  "config/system/channels.scm"))
+             (service home-mutable-files-service-type)
+             ;; (simple-service 'home-impure-symlinks-dotfiles
+             ;;                 home-impure-symlinks-service-type
+             ;;                 `(;; guix Configuration Scaffolding
+             ;;                   (".config/guix/channels.scm"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "config/system/channels.scm"))
 
-                               ;; StumpWM XDG Configuration Scaffolding
-                               (".config/stumpwm/config"
-                                ,(string-append
-                                  *home-path*
-                                  "files/stumpwm/config.lisp"))
+             ;;                   ;; StumpWM XDG Configuration Scaffolding
+             ;;                   (".config/stumpwm/config"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/stumpwm/config.lisp"))
 
-                               (".config/stumpwm/libraries"
-                                ,(string-append
-                                  *home-path*
-                                  "files/stumpwm/libraries"))
+             ;;                   (".config/stumpwm/libraries"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/stumpwm/libraries"))
 
-                               (".config/stumpwm/modules"
-                                ,(string-append
-                                  *home-path*
-                                  "files/stumpwm/modules"))
+             ;;                   (".config/stumpwm/modules"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/stumpwm/modules"))
 
-                               ;; Xorg Configuration Scaffolding
-                               (".Xdefaults"
-                                ,(string-append
-                                  *home-path*
-                                  "files/xorg/dot-Xdefaults"))
+             ;;                   ;; Xorg Configuration Scaffolding
+             ;;                   (".Xdefaults"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/xorg/dot-Xdefaults"))
 
-                               (".Xresources"
-                                ,(string-append
-                                  *home-path*
-                                  "files/xorg/dot-Xresources"))
+             ;;                   (".Xresources"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/xorg/dot-Xresources"))
 
-                               (".icons"
-                                ,(string-append
-                                  *home-path*
-                                  "files/xorg/dot-icons"))
+             ;;                   (".icons"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/xorg/dot-icons"))
 
-                               (".config/xorg/start-xterm.sh"
-                                ,(string-append
-                                  *home-path*
-                                  "files/xorg/start-xterm.sh"))
+             ;;                   (".config/xorg/start-xterm.sh"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/xorg/start-xterm.sh"))
 
-                               ;; Emacs Configuration Scaffolding
-                               (".config/emacs"
-                                ,(string-append
-                                  *home-path*
-                                  "files/emacs"))
+             ;;                   ;; Emacs Configuration Scaffolding
+             ;;                   (".config/emacs"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/emacs"))
 
-                               ;; Lem Configuration Scaffolding
-                               (".config/lem"
-                                ,(string-append
-                                  *home-path*
-                                  "files/lem"))
+             ;;                   ;; Lem Configuration Scaffolding
+             ;;                   (".config/lem"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/lem"))
 
-                               ;; Nyxt Configuration Scaffolding
-                               (".config/nyxt"
-                                ,(string-append
-                                  *home-path*
-                                  "files/nyxt"))
+             ;;                   ;; Nyxt Configuration Scaffolding
+             ;;                   (".config/nyxt"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/nyxt"))
 
-                               (".local/share/nyxt/extensions"
-                                ,(string-append
-                                  *home-path*
-                                  "files/nyxt/extensions"))))
+             ;;                   (".local/share/nyxt/extensions"
+             ;;                    ,(string-append
+             ;;                      *home-path*
+             ;;                      "files/nyxt/extensions"))))
 
              ;; Set environment variables for every session
              ;; (service home-env-vars-configuration-service-type)
