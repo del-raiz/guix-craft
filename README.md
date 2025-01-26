@@ -18,42 +18,42 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 ## Project Scaffolding
 
 ```scm
-    dotfiles/                   ;; Project Root
+    dotfiles/                                ;; Project Root
     |- config/
-       |- home/                    ;; StumpWM Home Config Root
-          |- home-config.scm
+       |- home/                              ;; GuixOS Home Config Root
+          |- home-config.scm                 ;; ** GuixOS StumpWM Home Config **
           |- dot-bash_profile.sh
           |- dot-bashrc.sh
-          |- services/             ;; Home Service Modules
+          |- services/                       ;; Home Service Modules
              |- environment.scm
              |- streaming.scm
              |- udiskie.scm
              |- xdg-files.scm
-       |- packages/                ;; Custom GuixOS Package Modules
+       |- packages/                          ;; Custom GuixOS Package Modules
           |- video.scm
-       |- services/                ;; Custom GuixOS Service Modules
+          |- devtools-manifest.scm
+          |- org-docs-manifest.scm
+       |- services/                          ;; Custom GuixOS Service Modules
           |- substitutes.scm
-       |- system/                  ;; GuixOS Config Root
-          |- guixos.scm            ;; ** GuixOS StumpWM Config **
+       |- system/                            ;; GuixOS Config Root
+          |- system-config.scm               ;; ** GuixOS StumpWM System Config **
           |- channels.scm
-    |- files/                      ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
+    |- files/                                ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
        |- assets/...
        |- common-lisp/...
-       |- gnupg/...                ;; tdb
-       |- gtk-3.0/...              ;; tbd
-       |- guile/...                ;; tbd
-       |- isync/...                ;; tbd
-       |- msmtp/...                ;; tbd
+       |- gnupg/...
+       |- guile/...
+       |- isync/...
+       |- msmtp/...
        |- emacs/...
-       |- lem/...
-       |- nyxt/...                 ;; New!! Ressurrected & simplified! 
-       |- stumpwm/                 ;; StumpWM Config
+       |- lem/...                            ;; New!! Resurrected
+       |- nyxt/...                           ;; New!! Ressurrected
+       |- stumpwm/                           ;; StumpWM Config
           |- config
           |- modules/
           |- libraries/
-       |- vterm/...                ;; tbd
        |- xorg/...
-       |- zathura/...              ;; tbd
+       |- zathura/...                        ;; tbd
 ```
 
 
@@ -113,7 +113,7 @@ information:
 Note: I am currently working to generalize this to define machine and user
 specific variables in one place...
 
-Now we are ready to install GuixOS Sway ("Alkaline Ice"):
+Now we are ready to install GuixOS StumpWM ("Crystallized Momentum"):
 
 ```bash
 
@@ -126,8 +126,8 @@ Now we are ready to install GuixOS Sway ("Alkaline Ice"):
 ```
 
 Once the initial install is complete, you will be able to reconfigure using
-the command `gosr` if you choose to keep this project scaffolding, else you
-will need to edit `home-bash-configuration` in `home-config.scm`.
+the commands `gosr` & `gohr` if you choose to keep this project scaffolding, 
+else you will need to edit `home-bash-configuration` in `home-config.scm`.
 
 
 ## Establishing Wifi
