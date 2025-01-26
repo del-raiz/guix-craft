@@ -19,7 +19,7 @@
 (add-to-load-path #p"~/.config/stumpwm/libraries/swm-wpctl/")
 (load-module "swm-wpctl")
 (setf swm-wpctl:*modeline-fmt* "α %v")
-(setf swm-wpctl:*wpctl-path* "/home/logoraz/.guix-home/profile/bin/wpctl")
+(setf swm-wpctl:*wpctl-path* "/run/current-system/profile/bin/wpctl")
 (setf swm-wpctl:*mixer-command* "playerctl")
 
 ;;; Simple Bluetooth Controls for StumpWM

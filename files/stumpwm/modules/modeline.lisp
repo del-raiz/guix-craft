@@ -44,12 +44,11 @@
       *mode-line-border-width* 1)
 
 ;;; Modeline Packages (stumpwm-contrib)
-
 (load-module "cpu")
 (load-module "mem")
 (load-module "battery-portable")
 (load-module "wifi")
-
+ 
 ;;; Custom Module Settings
 ;; f0 = font-hack, f1 = font-jetbrains-mono
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
@@ -58,6 +57,7 @@
       *hidden-window-color*          "^**"
       *mode-line-highlight-template* "«~A»"
       wifi::*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
+
 
 ;;; Modeline Formatter
 ;;TODO: change format so groups are blue...
