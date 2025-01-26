@@ -12,8 +12,7 @@
 ;;; References:
 ;;; 1. StumpWM Contrib: https://github.com/stumpwm/stumpwm-contrib
 ;;; 2. battery-portible contrib
-;;;    https://github.com/stumpwm/stumpwm-contrib/tree/master/modeline/ \
-;;;    battery-portable
+;;;    https://github.com/stumpwm/stumpwm-contrib/tree/master/modeline/battery-portable
 ;;; 3. mem module contrib
 ;;;    https://github.com/stumpwm/stumpwm-contrib/tree/master/modeline/mem
 ;;;    Then you can use “%M” and/or “%N in your mode line format.
