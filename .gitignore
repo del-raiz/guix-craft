@@ -1,12 +1,12 @@
 # Main
 
 # Emacs
-/files/emacs/etc/
-/files/emacs/var/
+files/emacs/etc/
+files/emacs/var/
 
 # Lem
-/files/lem/history/
-/files/lem/config.lisp
+files/lem/history/
+files/lem/config.lisp
 
 # Nyxt
-#/files/extensions/tbd
+files/nyxt/bookmarks.lisp

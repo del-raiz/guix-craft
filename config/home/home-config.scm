@@ -15,12 +15,14 @@
 
 (use-package-modules fonts web-browsers gnuzilla password-utils gnupg mail
                      gstreamer video compton image-viewers linux music
-                     gnucash gimp inkscape graphics compression version-control
-                     guile guile-xyz emacs emacs-xyz sdl compression
-                     text-editors
-                     ;; added from system
-                     lisp lisp-xyz wm xorg xdisorg freedesktop
+                     gnucash gimp inkscape graphics image gnome gnome-xyz
+                     guile guile-xyz emacs emacs-xyz sdl text-editors
+                     shellutils pdf glib
+                     lisp lisp-xyz wm
+                     ;; xorg xdisorg
+                     freedesktop
                      ssh cups suckless networking package-management)
+
 
 ;;; Package Transformations
 (define latest-nyxt
@@ -28,51 +30,103 @@
    '((without-tests . "nyxt")
      (with-latest   . "nyxt"))))
 
+(define curr-trash-cli
+  ;; Currently failing build due to tests since update to latest python...
+  (options->transformation
+   '((without-tests . "trash-cli"))))
+
+
 ;;; Packages
-(define guile-packages
-  (list guile-next ;;|--> gnu packages guile
+(define %guile-packages
+  (list guile-next      ;;|--> gnu packages guile
         guile-ares-rs)) ;;|--> gnu packages guile-xyz
 
-(define logoraz-packages
-  (list font-hack ;;|--> gnu packages fonts
+(define %cl-packages
+  (list ccl
+        ;; clasp-cl (??)
+        cl-iterate
+        cl-micros
+        cl-slime-swank))
+
+(define %logoraz-packages
+  (list picom  ;;|--> gnu packages compton
+        feh    ;;|--> gnu packages image-viewers
+
+        ;; Mail
+        mu
+        isync              ;;|--> gnu packages mail
+        msmtp
+
+        ;; Flatpak & XDG Utilities
+        flatpak
+        xdg-desktop-portal
+        xdg-utils ;;|--> gnu packages freedesktop
+        xdg-dbus-proxy
+        shared-mime-info
+        (list glib "bin")
+
+        ;; Appearance
+        ;; matcha-theme
+        ;; papirus-icon-theme
+        ;; adwaita-icon-theme
+        ;; breeze-icons ;; for KDE apps
+        ;; gnome-themes-extra
+        ;; bibata-cursor-theme
+
+        ;; Fonts
+        font-hack                  ;;|--> gnu packages fonts
         font-jetbrains-mono
+        font-awesome
         font-fira-code
         font-iosevka-aile
         font-google-noto
         font-google-noto-emoji
         font-google-noto-sans-cjk
+
+        ;; Browsers
+        (latest-nyxt nyxt)        ;;|--> gnu packages web-browsers :www-mail
+        icecat                    ;;|--> gnu packages gnuzilla
+
+        ;; Editors/IDE's
         lem
         sdl2
-        (latest-nyxt nyxt) ;;|--> gnu packages web-browsers :www-mail
-        icecat             ;;|--> gnu packages gnuzilla
-        keepassxc          ;;|--> gnu packages password-utils
-        gnupg              ;;|--> gnu packages gnupg
-        isync              ;;|--> gnu packages mail
-        msmtp
-        mu
-        gstreamer ;;|--> gnu packages gstreamer
+
+        ;; Authentication/Encryption
+        gnupg
+        pinentry
+        keepassxc
+        password-store ;; move to password-store eventually...
+
+        ;; Audio devices & Media playback
+        mpv                        ;;|--> gnu packages video
+        mpv-mpris
+        vlc
+        youtube-dl
+        playerctl                  ;;|--> gnu packages music
+        gstreamer
+        gst-plugins-base
         gst-plugins-good
         gst-plugins-bad
         gst-plugins-ugly
         gst-libav
-        mpv ;;|--> gnu packages video :apps
-        vlc
-        picom    ;;|--> gnu packages compton
-        feh      ;;|--> gnu packages image-viewers
-        pipewire ;;|--> gnu packages linux
-        wireplumber
-        lm-sensors
-        brightnessctl
-        playerctl ;;|--> gnu packages music
-        gnucash   ;;|--> gnu packages gnucash
-        gimp      ;;|--> gnu packages gimp
-        inkscape  ;;|--> gnu packages inkscape
-        blender   ;;|--> gnu packages graphics
-        zip       ;;|--> gnu packages compression
-        unzip
-        git))     ;;|--> gnu packages version-control
 
-(define emacs-packages
+        ;; PDF reader
+        zathura
+        zathura-pdf-mupdf
+
+        ;; Applications
+        gnucash  ;;|--> gnu packages gnucash
+        gimp     ;;|--> gnu packages gimp
+        inkscape ;;|--> gnu packages inkscape
+        blender  ;;|--> gnu packages graphics
+
+        ;; Utilities
+        blueman   ;;|--> gnu package networking
+        udiskie
+        network-manager-applet
+        trash-cli))
+
+(define %emacs-packages
   (list  emacs                    ;;|--> gnu packages emacs
          emacs-diminish           ;;|--> gnu packages emacs-xyz
          emacs-delight
@@ -106,7 +160,7 @@
          emacs-erc-image
          emacs-emojify))
 
-(define stumpwm-packages
+(define %stumpwm-packages
   (list sbcl-parse-float          ;;|--> gnu packages lisp-xyz
         sbcl-local-time
         sbcl-cl-ppcre
@@ -131,35 +185,32 @@
         sbcl-stumpwm-wifi
         sbcl-stumpwm-battery-portable))
 
-(define x11-util-packages
-  (list xterm ;;|--> gnu packages xorg
-        transset
-        xhost
-        xset
-        xsetroot
-        xinput
-        xrdb
-        xrandr
-        xclip ;;|--> gnu packages xdisorg
-        xsel
-        xss-lock
-        xdg-utils ;;|--> gnu packages freedesktop
-        blueman   ;;|--> gnu package networking
-        bluez))
+;; (define %xorg-packages
+;;   (list xterm ;;|--> gnu packages xorg
+;;         transset
+;;         xhost
+;;         xset
+;;         xsetroot
+;;         xinput
+;;         xrdb
+;;         xrandr
+;;         xclip ;;|--> gnu packages xdisorg
+;;         xsel
+;;         xss-lock))
 
 (define *home-path* "/home/logoraz/dotfiles/")
-
 
 (define stumpwm-home
   (home-environment
    ;; Below is the list of packages that will show up in your
    ;; Home profile, under ~/.guix-home/profile.
    (packages (append
-              x11-util-packages
-              stumpwm-packages
-              guile-packages
-              logoraz-packages
-              emacs-packages))
+              %cl-packages
+              %stumpwm-packages
+              ;; %xorg-packages
+              %guile-packages
+              %emacs-packages
+              %logoraz-packages))
 
    ;; Below is the list of Home services.  To search for available
    ;; services, run 'guix home search KEYWORD' in a terminal.
@@ -278,6 +329,7 @@
                         (list (local-file "dot-bash_profile.sh"
                                           #:recursive? #t))))))
             %base-home-services))))
+
 
 ;; Enable Home
 stumpwm-home

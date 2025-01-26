@@ -9,25 +9,113 @@
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd))
 
-(use-system-modules keyboard)
-(use-package-modules ssh cups suckless fonts wm lisp lisp-xyz)
-(use-service-modules cups ssh desktop xorg)
+(use-system-modules keyboard nss)
 
-(define locutus-keyboard-layout
+(use-package-modules ssh cups suckless fonts wm lisp lisp-xyz
+                     file-systems linux audio version-control
+                     wget curl compression xorg xdisorg)
+
+(use-service-modules cups ssh desktop xorg
+                     guix networking)
+
+
+;;; operating-system parameters
+
+(define %guixos-user-name "logoraz")
+
+(define %guixos-keyboard-layout
   (keyboard-layout "us"))
 
-;; Transformations not being used due to bug, stumpwm dependencies require
-;; 2.4.7 fasl's (current in Guix)
+(define %guixos-bootloader
+  (bootloader-configuration
+   (bootloader grub-efi-bootloader)
+   (targets '("/boot/efi"))
+   (keyboard-layout %guixos-keyboard-layout)))
+
+(define %guixos-swap-devices
+  (list (swap-space
+         (target
+          (uuid "08b16346-aa6b-4744-9856-6070d78e38ca")))))
+
+(define %guixos-file-systems
+  ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
+  (cons* (file-system
+          (mount-point  "/boot/efi")
+          (device (uuid "F8E9-9C22"
+			'fat32))
+          (type "vfat"))
+         (file-system
+          (mount-point "/")
+          (device (uuid "872f93f3-bcb4-4907-bb4c-d6002496d3a8"
+			'ext4))
+          (type "ext4"))
+	 %base-file-systems))
+
+(define %guixos-groups
+  ;; Add the 'seat' group
+  (cons
+   (user-group (system? #t) (name "seat"))
+   %base-groups))
+
+(define %guixos-users
+  (cons* (user-account
+          (name "logoraz")
+          (comment "Worker Bee")
+          (home-directory "/home/logoraz")
+          (group "users")
+          (supplementary-groups '("wheel"    ;; sudo
+                                  "netdev"   ;; network devices
+                                  "tty"      ;; -
+                                  "input"    ;; -
+                                  "lp"       ;; control bluetooth devices
+                                  "audio"    ;; control audio devices
+                                  "video"))) ;; control video devices
+         %base-user-accounts))
+
+
+;;; Packages & Transformations
+
+;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
 (define latest-sbcl
   (options->transformation
    '((with-latest . "sbcl"))))
 
-(define stumpwm-base-packages
-  (list sbcl ;(latest-sbcl sbcl)
-        stumpwm+slynk))
+(define %guixos-base-packages
+  (cons* sbcl ;(latest-sbcl sbcl)
+         stumpwm+slynk
+         bcachefs-tools
 
-;; System Services
-;; Use Package substitutes instead of compiling everything & specify channels
+         ;; tools
+         pipewire
+         wireplumber
+         bluez
+         brightnessctl
+         lm-sensors
+         openssh-sans-x
+         git
+         (list git "send-email")
+         curl
+         wget
+         zip
+         unzip
+
+         xterm ;;|--> gnu packages xorg
+         transset
+         xhost
+         xset
+         xsetroot
+         xinput
+         xrdb
+         xrandr
+         xclip ;;|--> gnu packages xdisorg
+         xsel
+         xss-lock
+
+         %base-packages))
+
+
+;;; System Services
+
 ;; https://guix.gnu.org/manual/en/html_node/Getting-Substitutes-from-Other-Servers.html
 (define (substitutes->services config)
   (guix-configuration
@@ -46,91 +134,83 @@
               "0j66nq1bxvbxf5n8q2py14sjbkn57my0mjwq7k1qm9ddghca7177")))
            %default-authorized-guix-keys))))
 
-(define guix-system-services
+(define %guixos-base-services
   (cons*
+   ;; Ref: https://guix.gnu.org/manual/en/html_node/X-Window.html
    (set-xorg-configuration
     (xorg-configuration
-     (keyboard-layout locutus-keyboard-layout)))
+     (keyboard-layout %guixos-keyboard-layout)))
+
    (service screen-locker-service-type
             (screen-locker-configuration
              (name "slock")
              (program (file-append slock "/bin/slock"))))
+
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (service bluetooth-service-type
             (bluetooth-configuration
              (auto-enable? #f)))
+
    (service cups-service-type
             (cups-configuration
              (web-interface? #t)
              (default-paper-size "Letter")
              (extensions (list cups-filters hplip-minimal))))
+
    ;; ssh user@host -p 2222
    (service openssh-service-type
             (openssh-configuration
              (openssh openssh)
              (port-number 2222)))
+
+   ;; TODO: New - need to look into & configure!!
+   (service tor-service-type)
+
+   ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (modify-services %desktop-services
                     (guix-service-type
                      config =>
                      (substitutes->services config)))))
 
 
-;;;; Define Operating system
-(define logoraz-user-account
-  (list (user-account
-         (name "logoraz")
-         (comment "Crafter Bee")
-         (group "users")
-         (home-directory "/home/logoraz")
-         (supplementary-groups '("wheel" "netdev" "audio" "video" "lp")))))
+;;; Define GuixOS StumpWm - Crystallized Momentum
 
-(define locutus-file-system
-  (list (file-system
-         (mount-point  "/boot/efi")
-         (device (uuid "F8E9-9C22" 'fat32))
-         (type "vfat"))
-        (file-system
-         (mount-point "/")
-         (device (uuid "872f93f3-bcb4-4907-bb4c-d6002496d3a8" 'ext4))
-         (type "ext4"))))
-
-(define guix-os
+(define guixos-stumpwm
   (operating-system
+   ;; (inherit %base-system)
+   (host-name "locutus")
+   (timezone "America/Los_Angeles")
+   (locale "en_US.utf8")
+   (keyboard-layout %guixos-keyboard-layout)
+
    (kernel linux)
+   (firmware (list linux-firmware))
+
    (initrd microcode-initrd)
    ;; Fixes Xorg Lag - https://gitlab.com/nonguix/nonguix/-/issues/212
+   ;; for Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB) Laptop.
    (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
-   (firmware (list linux-firmware))
-   (locale "en_US.utf8")
-   (timezone "America/Los_Angeles")
-   (keyboard-layout locutus-keyboard-layout)
-   (host-name "locutus")
 
-   ;; List of user accounts ('root' is implicit).
-   (users (append
-           logoraz-user-account
-           %base-user-accounts))
+   (bootloader %guixos-bootloader)
 
-   (bootloader (bootloader-configuration
-                (bootloader grub-efi-bootloader)
-                (targets (list "/boot/efi"))
-                (keyboard-layout keyboard-layout)))
-
-   (swap-devices (list (swap-space
-                        (target
-                         (uuid
-			  "08b16346-aa6b-4744-9856-6070d78e38ca")))))
+   (swap-devices %guixos-swap-devices)
 
    ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
-   (file-systems (append
-                  locutus-file-system
-		  %base-file-systems))
+   (file-systems %guixos-file-systems)
+   
+   (groups %guixos-groups)
+
+   ;; List of user accounts ('root' is implicit).
+   (users %guixos-users)
 
    ;; Use 'guix search KEYWORD' to search for packages.
-   (packages (append stumpwm-base-packages
-                     %base-packages))
+   (packages %guixos-base-packages)
 
-   (services guix-system-services)))
+   (services %guixos-base-services)
 
-;;; Instantiate Guix-OS
-guix-os
+   ;; Allow resolution of '.local' host names with mDNS.
+   (name-service-switch %mdns-host-lookup-nss)))
+
+
+;;; Instantiate GuixOS StumpWM Crystallized Momentum
+guixos-stumpwm
