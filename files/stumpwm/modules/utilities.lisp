@@ -18,7 +18,6 @@
 ;; TODO: Refactor -> move to modeline file.
 (add-to-load-path #p"~/.config/stumpwm/libraries/swm-wpctl/")
 (load-module "swm-wpctl")
-(setf swm-wpctl:*modeline-fmt* "^f2^f0 %v")
 (setf swm-wpctl:*wpctl-path* "/run/current-system/profile/bin/wpctl")
 (setf swm-wpctl:*mixer-command* "playerctl")
 

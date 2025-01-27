@@ -47,15 +47,18 @@
 (load-module "mem")
 (load-module "battery-portable")
 (load-module "wifi")
+(setf wifi::*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
  
 ;;; Custom Module Settings
 ;; f0 = font-hack, f1 = font-jetbrains-mono, f2 = fontawesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
-      cpu::*cpu-usage-modeline-fmt*  "^f1⊠^f0 ^[~A~0D%^]"
-      mem::*mem-modeline-fmt*        "≡ %a%p"
+      cpu::*cpu-usage-modeline-fmt*  "^f2^f0 ^[~A~0D%^]"
+      mem::*mem-modeline-fmt*        "^f2^f0 %a%p"
+      wifi::*wifi-modeline-fmt*      "^f2^f0 %e %p"
+      swm-wpctl:*modeline-fmt*       "^f2^f0 %v"
+
       *hidden-window-color*          "^**"
-      *mode-line-highlight-template* "«~A»"
-      wifi::*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
+      *mode-line-highlight-template* "«~A»")
 
 
 ;;; Modeline Formatter
@@ -68,7 +71,7 @@
     ("%C")  ;; CPU usage
     ("%M")  ;; Memory usage
     ("%I")  ;; Wifi status
-    ("%B")  ;; Battery info
+    ("^f2^f0 %B")  ;; Battery info
     ("%d")) ;; Date/Time
   "List of formatters for the modeline.")
 
