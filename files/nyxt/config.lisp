@@ -13,7 +13,7 @@
 
 ;;; A very simple configuration... doesn't need to be complex...
 
-(in-package #:nyxt-user)
+(in-package :nyxt-user)
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
 ;;; everywhere.
@@ -21,10 +21,11 @@
 
 ;; Loading files from the same directory (~/.config/nyxt/).
 (define-nyxt-user-system-and-load nyxt-user/basic-config
-  :components ("keepassxc-pwi"
+  :components ("utilities"
+               "keepassxc-pwi"
                "keepassxc-3431"))
 
-(define-configuration :buffer
+(define-configuration buffer
     ((default-modes `(emacs-mode ,@%slot-value%))))
 
 ;;; Nyxt Extensions
@@ -38,3 +39,4 @@
 (defmethod files:resolve ((profile nyxt:nyxt-profile) (file nyxt/mode/bookmark:bookmarks-file))
            "Reroute bookmarks to the `.config/nyxt/' directory."
            #p"~/.config/nyxt/bookmarks.lisp")
+
