@@ -26,7 +26,7 @@
 (setf *mode-line-timeout* 2)
 
 ;; Formatting options
-(setf *time-modeline-string* "%F W%U %I:%M:%S")
+(setf *time-modeline-string* "%F %I:%M:%S")
 
 ;; Let’s also indicate how the groupname is displayed.
 (setf *group-format* "%t")
