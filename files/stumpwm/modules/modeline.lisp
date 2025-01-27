@@ -53,7 +53,7 @@
 ;; f0 = font-hack, f1 = font-jetbrains-mono, f2 = fontawesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
       cpu::*cpu-usage-modeline-fmt*  "^f2^f0 ^[~A~0D%^]"
-      mem::*mem-modeline-fmt*        "^f2^f0 %a%p"
+      mem::*mem-modeline-fmt*        "^f2^f0 %p"
       wifi::*wifi-modeline-fmt*      "^f2^f0 %e %p"
       swm-wpctl:*modeline-fmt*       "^f2^f0 %v"
 

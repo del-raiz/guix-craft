@@ -48,13 +48,14 @@
   (swm-gaps:toggle-gaps))
 
 ;; Window Stylization Parameters
-(setf *maxsize-border-width       2 
+(setf *maxsize-border-width       2
       *normal-border-width*       2
       *float-window-border*       2
       *float-window-title-height* 15
       *window-border-style*       :thick
       *window-format*             "%n:%t")
 
+;; (set-win-bg-color        logoraz-nord2)
 (set-focus-color         logoraz-nord9)
 (set-unfocus-color       logoraz-nord3)
 (set-float-focus-color   logoraz-nord9)
