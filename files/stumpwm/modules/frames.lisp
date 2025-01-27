@@ -37,7 +37,7 @@
 ;; This was the cause of swm-gaps crashing with Emacs!
 (setf *ignore-wm-inc-hints* t)
 
-;; Gaps
+;; Window Gaps
 (load-module "swm-gaps")
 
 (setf swm-gaps:*head-gaps-size*  0
@@ -47,14 +47,21 @@
 (when *initializing*
   (swm-gaps:toggle-gaps))
 
-;;; Messaging & Input Windows
-;; Show messages in the center
-(set-border-color        logoraz-nord3)
-(set-focus-color         logoraz-nord1)
-(set-unfocus-color       logoraz-nord0)
-(set-float-focus-color   logoraz-nord1)
-(set-float-unfocus-color logoraz-nord0)
+;; Window Stylization Parameters
+(setf *maxsize-border-width       2 
+      *normal-border-width*       2
+      *float-window-border*       2
+      *float-window-title-height* 15
+      *window-border-style*       :thick
+      *window-format*             "%n:%t")
 
+(set-focus-color         logoraz-nord9)
+(set-unfocus-color       logoraz-nord3)
+(set-float-focus-color   logoraz-nord9)
+(set-float-unfocus-color logoraz-nord3)
+
+;;; Message and Input Windows Stylization Parameters
+(set-border-color logoraz-nord9)
 (set-fg-color logoraz-nord4)
 (set-bg-color logoraz-nord0)
 
@@ -62,15 +69,11 @@
 (setf *which-key-format* (concat *key-seq-color* "*~5a^n ~a"))
 
 (setf *input-window-gravity*     :top-right
+      *message-window-y-margin*  30
       *message-window-padding*   10
       *message-window-y-padding* 10
       *message-window-gravity    :top-right)
 
-(setf *normal-border-width*       1
-      *float-window-border*       1
-      *float-window-title-height* 15
-      *window-border-style*       :none
-      *window-format*             "%n:%t")
 
 ;;; Mouse focus/float window settings
 (setf *mouse-focus-policy* :click ; Mouse click should focus the window

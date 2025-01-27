@@ -26,7 +26,7 @@
 (setf *mode-line-timeout* 2)
 
 ;; Formatting options
-(setf *time-modeline-string* "%F %I:%M:%S")
+(setf *time-modeline-string* "%F W%U %I:%M:%S")
 
 ;; Let’s also indicate how the groupname is displayed.
 (setf *group-format* "%t")
@@ -49,7 +49,7 @@
 (load-module "wifi")
  
 ;;; Custom Module Settings
-;; f0 = font-hack, f1 = font-jetbrains-mono
+;; f0 = font-hack, f1 = font-jetbrains-mono, f2 = fontawesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
       cpu::*cpu-usage-modeline-fmt*  "^f1⊠^f0 ^[~A~0D%^]"
       mem::*mem-modeline-fmt*        "≡ %a%p"

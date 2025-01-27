@@ -31,7 +31,7 @@
                         :subfamily "Regular" :size 11 :antialias t)
             ,(make-instance
               'xft:font :family "FontAwesome"
-                        :subfamily "Regular" :size 11 :antialias t)))
+                        :subfamily "Regular" :size 13 :antialias t)))
 
 ;;; Colors
 (setq *colors* (list
