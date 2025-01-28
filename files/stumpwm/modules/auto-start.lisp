@@ -31,19 +31,15 @@
 ;;; Disable Trackpad (set here as default)
 ;; TODO: Establish as a command so the user can toggle on/off via StumpWM
 ;;       |---> Place in `syntax.lisp'
-;; FIXME: The ID changes after a system reconfigure --> need a way to resolve this
-;;        without having to update the code ever reconfigure...
-;; To list inputs -> xinput --list --> needed to establish <device> aka "id"
-;; xinput list-props 10 | head -n5 --> needed to establish <propert>
 (run-shell-command "xinput set-prop 12 185 0")
 
 ;;; UI Settings
 
+;;; Enable screen compositing
+(run-shell-command "picom --corner-radius=5")
+
 ;;; Set Wallpaper
 (run-shell-command "feh --bg-scale  ~/Pictures/wallpapers/desktop-bg.jpg")
-
-;;; Enable screen compositing
-(run-shell-command "picom")
 
 ;;; Enable screen locking on suspend
 (run-shell-command "xss-lock -- slock")
