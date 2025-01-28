@@ -12,9 +12,9 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 
 ![View 1](files/assets/screenshots/guixos-stumpwm_1.png)
 
-![View 2](files/assets/screenshots/guixos-stumpwm-2.png)
+![View 2](files/assets/screenshots/guixos-stumpwm_2.png)
 
-![View 3](files/assets/screenshots/guixos-stumpwm-3.png)
+![View 3](files/assets/screenshots/guixos-stumpwm_3.png)
 
 
 ## Project Scaffolding
