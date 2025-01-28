@@ -1,4 +1,4 @@
-;;;; modeline.lisp --> Modeline Configuration for StumpWM
+;;;; Modeline Configuration for StumpWM
 
 ;;; Author:
 ;;; Erik P Almaraz
@@ -53,10 +53,10 @@
 ;; f0 = font-hack, f1 = font-jetbrains-mono, f2 = fontawesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
       cpu::*cpu-usage-modeline-fmt*  "^f2^f0 ^[~A~0D%^]"
-      mem::*mem-modeline-fmt*        "^f2^f0 %p"
+      mem::*mem-modeline-fmt*        "^f2^f0%p"
       wifi::*wifi-modeline-fmt*      "^f2^f0 %e %p"
       swm-wpctl:*modeline-fmt*       "^f2^f0 %v"
-
+      ;;
       *hidden-window-color*          "^**"
       *mode-line-highlight-template* "«~A»")
 
@@ -64,15 +64,15 @@
 ;;; Modeline Formatter
 ;;TODO: change format so groups are blue...
 (defvar *mode-line-formatter-list*
-  '(("%g")  ;; Groups
-    ("%W")  ;; Windows
-    ("^>")  ;; StumpWM modeline seperator
-    ("%P")  ;; Audio info
-    ("%C")  ;; CPU usage
-    ("%M")  ;; Memory usage
-    ("%I")  ;; Wifi status
+  '(("%g")   ;; Groups
+    ("%W")   ;; Windows
+    ("^>")   ;; StumpWM modeline seperator
+    ("%P")   ;; Audio info
+    ("%C")   ;; CPU usage
+    ("%M")   ;; Memory usage
+    ("%I")   ;; Wifi status
     ("^f2^f0 %B")  ;; Battery info
-    ("%d")) ;; Date/Time
+    ("%d"))  ;; Date/Time
   "List of formatters for the modeline.")
 
 (defun generate-modeline (elements &optional not-invertedp rightp)

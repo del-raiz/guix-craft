@@ -1,4 +1,4 @@
-;;;; syntax.lisp --> StumpWM Macro's, Helpers, & Commands
+;;;; StumpWM Commands, Helpers, & Macro
 
 ;;; Author:
 ;;; Erik P Almaraz
@@ -49,25 +49,19 @@
 ;; Lem connection to StumpWM
 (defcommand micros-start-server () ()
   "Start a micros server for StumpWM/Lem."
-  (sb-thread:make-thread
-   (lambda ()
-     (micros:create-server :port *stumpwm-port* :dont-close t))
-   :name "Micros Server Process.")
+  (micros:create-server :port *stumpwm-port* :dont-close t)
   (echo-string (current-screen) "Starting micros for StumpWM."))
 
 (defcommand micros-stop-server () ()
-  "Stop current micros server for StumpWM."
+  "Stop current micros server for StumpWM/Lem."
   (micros:stop-server *stumpwm-port*)
   (echo-string (current-screen) "Closing micros."))
+
 
 ;; Emacs connection to StumpWM
 (defcommand slynk-start-server () ()
   "Start a slynk server for sly."
-  (require :slynk)
-  (sb-thread:make-thread 
-   (lambda ()
-     (slynk:create-server :port *stumpwm-port* :dont-close t))
-   :name "Slynk Server Process.")
+  (slynk:create-server :port *stumpwm-port* :dont-close t)
   (echo-string (current-screen) "Starting slynk."))
 
 (defcommand slynk-stop-server () ()

@@ -1,4 +1,4 @@
-;;;; colors.lisp --> StumpWM Nord Colors Module
+;;;; StumpWM Colors Palette
 
 ;;; Author:
 ;;; Erik P Almaraz

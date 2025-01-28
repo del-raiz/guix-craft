@@ -1,4 +1,4 @@
-;;;; theme.lisp --> Theme settings for StumpWM
+;;;; Theme settings for StumpWM
 
 ;;; Author:
 ;;; Erik P Almaraz

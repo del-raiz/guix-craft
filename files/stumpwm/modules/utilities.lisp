@@ -1,4 +1,4 @@
-;;;; utilities.lisp --> Utilities for StumpWM
+;;;; Utilities for StumpWM
 
 ;;; Author:
 ;;; Erik P Almaraz

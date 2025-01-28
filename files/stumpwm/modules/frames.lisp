@@ -1,4 +1,4 @@
-;;;; frames.lisp --> Frames & Windows Configuration for StumpWM
+;;;; StumpWM Screen Configuration:  Frames & Windows
 
 ;;; Author:
 ;;; Erik P Almaraz

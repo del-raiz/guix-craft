@@ -1,4 +1,4 @@
-;;;; auto-start.lisp --> Start X11 environment for StumpWM
+;;;; Start X11 environment for StumpWM
 
 ;;; Author:
 ;;; Erik P Almaraz

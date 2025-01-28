@@ -1,4 +1,4 @@
-;;;; keybindings --> Keybindings for StumpWM
+;;;; Keybindings for StumpWM
 
 ;;; Author:
 ;;; Erik P Almaraz
@@ -117,7 +117,7 @@
   (let ((key-map (make-sparse-keymap)))
     (define-key key-map (kbd "w") "micros-start-server")
     (define-key key-map (kbd "x") "micros-stop-server")
-    (define-key key-map (kbd "y") "slynk-start-server")
-    (define-key key-map (kbd "z") "slynk-stop-server")
+    ;; (define-key key-map (kbd "y") "slynk-start-server")
+    ;; (define-key key-map (kbd "z") "slynk-stop-server")
     key-map))
 (define-key *root-map* (kbd "L") '*cl-server-keymap*)
