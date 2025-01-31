@@ -24,15 +24,15 @@
        *home-path*
        "files/stumpwm/config.lisp"))
 
-    (".config/stumpwm/libraries"
-     ,(string-append
-       *home-path*
-       "files/stumpwm/libraries"))
-
     (".config/stumpwm/modules"
      ,(string-append
        *home-path*
        "files/stumpwm/modules"))
+
+    (".config/stumpwm/source"
+     ,(string-append
+       *home-path*
+       "files/stumpwm/source"))
 
     ;; Xorg Configuration Scaffolding
     (".Xdefaults"
