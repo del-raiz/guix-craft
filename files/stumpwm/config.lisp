@@ -64,19 +64,22 @@
 ;; (setf *altgr-offset* 4)
 ;; (register-altgr-as-modifier)
 
+;; TODO: Determine a better way to load in modules...
+;; sort of just doing things the primitive way.
+
 ;;; Initialize X11 Desktop Environment & Resources.
-(load "~/.config/stumpwm/modules/auto-start.lisp")
+(load "~/.config/stumpwm/source/auto-start.lisp")
 
 ;;; Stumpwm-contrib Packages/Libraries
 
 ;;; Load in configuration/custom files
-(load "~/.config/stumpwm/modules/syntax.lisp")
-(load "~/.config/stumpwm/modules/utilities.lisp")
-(load "~/.config/stumpwm/modules/colors.lisp")
-(load "~/.config/stumpwm/modules/theme.lisp")
-(load "~/.config/stumpwm/modules/frames.lisp")
-(load "~/.config/stumpwm/modules/keybindings.lisp")
-(load "~/.config/stumpwm/modules/modeline.lisp")
+(load "~/.config/stumpwm/source/syntax.lisp")
+(load "~/.config/stumpwm/source/utilities.lisp")
+(load "~/.config/stumpwm/source/colors.lisp")
+(load "~/.config/stumpwm/source/theme.lisp")
+(load "~/.config/stumpwm/source/frames.lisp")
+(load "~/.config/stumpwm/source/keybindings.lisp")
+(load "~/.config/stumpwm/source/modeline.lisp")
 
 ;; Start the mode line
 (when *initializing*
