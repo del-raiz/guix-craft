@@ -36,7 +36,7 @@
 ;;; UI Settings
 
 ;;; Enable screen compositing
-(run-shell-command "picom --corner-radius=5")
+(run-shell-command "picom")
 
 ;;; Set Wallpaper
 (run-shell-command "feh --bg-scale  ~/Pictures/wallpapers/desktop-bg.jpg")
