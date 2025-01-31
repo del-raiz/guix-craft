@@ -1,4 +1,5 @@
 (
+(:url "https://config.phundrak.com/stumpwm/" :title "StumpWM | Phundrak's Dotfiles" :date "2025-01-31T21:37:30.172713Z" :tags ("Lisp2"))
 (:url "https://forum.systemcrafters.net/" :title "System Crafters - System Crafters Forum" :date "2025-01-07T01:54:42.012329Z" :tags ("Craft"))
 (:url "https://frame.work/" :title "Framework | Fix Consumer Electronics" :date "2025-01-11T17:18:53.018223Z" :tags ("Craft"))
 (:url "https://git-send-email.io/" :title "Learn to use email with git!" :date "2024-07-25T02:48:04.417408Z" :tags ("Guix"))
@@ -8,8 +9,8 @@
 (:url "https://issues.guix.gnu.org/" :title "Guix issue tracker" :date "2024-08-11T15:47:51.773885Z" :tags ("Guix"))
 (:url "https://renter.turbotenant.com/auth/login" :title "TurboTenant" :date "2024-07-24T13:25:01.796231Z" :tags ("Home"))
 (:url "https://stumpwm.github.io/" :title "Stump Window Manager" :date "2025-01-28T01:26:05.849382Z" :tags ("Craft"))
-(:url "https://stumpwm.github.io/git/stumpwm-git.html#Top" :title "StumpWM Manual: Top" :date "2025-01-26T15:30:41.643337Z" :tags ("Craft"))
-(:url "https://systemcrafters.store/supporters/sign_in" :title "System Crafters" :date "2025-01-07T01:54:09.481006Z" :tags ("Craft"))
+(:url "https://stumpwm.github.io/git/stumpwm-git.html#Top" :title "StumpWM Manual: Top" :date "2025-01-26T15:30:41.643337Z" :tags ("Lisp2"))
+(:url "https://systemcrafters.store/supporters/sign_in" :title "System Crafters" :date "2025-01-07T01:54:09.481006Z" :tags ("Lisp2"))
 (:url "https://toys.whereis.みんな/" :title "Toys/Webring for GNU Guix channels" :date "2024-07-25T02:28:02.443124Z" :tags ("Guix"))
 (:url "https://www.artstation.com/artwork/XB4DQn" :title "ArtStation - Away In Silence" :date "2025-01-26T19:53:40.675884Z" :tags ("Craft"))
 (:url "https://www.blueletterbible.org/esv/jhn/1/1/s_998001" :title "John 1 (ESV) - In the beginning was the" :date "2025-01-06T05:46:16.147413Z" :tags ("Philo"))

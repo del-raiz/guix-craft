@@ -61,6 +61,9 @@
   (add-to-list 'nerd-icons-extension-icon-alist
                '("lisp" nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver))
 
+  (add-to-list 'nerd-icons-extension-icon-alist
+               '("asd" nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver))
+  
   (add-to-list 'nerd-icons-mode-icon-alist
                '(lisp-mode nerd-icons-sucicon "nf-custom-common_lisp" :face nerd-icons-silver)))
 
