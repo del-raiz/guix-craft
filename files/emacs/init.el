@@ -74,5 +74,4 @@
 (require 'raz-denote)
 (require 'raz-org)
 (require 'raz-erc)
-;;TODO - need to configure on new GUIX Home scaffold
-;; (require 'raz-mu4e)
+(require 'raz-mu4e)

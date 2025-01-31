@@ -29,8 +29,8 @@
   ;; and you can select a program from that list.
   (setq sly-lisp-implementations
         `((sbcl (,(executable-find "sbcl")))
-          (ccl (,(executable-find "ccl")))
-          (clasp (,(executable-find "clasp")))))
+          ;; (clasp (,(executable-find "clasp")))
+          (ccl (,(executable-find "ccl")))))
 
   (defun raz/stumpwm-sly-connect ()
     "Auto connect to StumpWM slynk session -> port 4005."
