@@ -53,6 +53,7 @@
 
 (define %logoraz-packages
   (list picom                      ;;|--> StumpWM Tools
+        compton
         feh
         libnotify
 
@@ -192,12 +193,12 @@
 
 
 ;;; home-environment
-(define %gosr (string-append "sudo guix system -L ~/dotfiles/"
-                             "reconfigure"
+(define %gosr (string-append "sudo guix system -L ~/dotfiles/ "
+                             "reconfigure "
                              "~/dotfiles/config/system/system-config.scm"))
 
-(define %gohr (string-append "guix home -L ~/dotfiles/"
-                             "reconfigure"
+(define %gohr (string-append "guix home -L ~/dotfiles/ "
+                             "reconfigure "
                              "~/dotfiles/config/home/home-config.scm"))
 
 (define stumpwm-home

@@ -34,7 +34,7 @@
        *home-path*
        "files/stumpwm/source"))
 
-    ;; Xorg Configuration Scaffolding
+    ;; Xorg/XDG Configuration Scaffolding
     (".Xdefaults"
      ,(string-append
        *home-path*
@@ -54,6 +54,11 @@
      ,(string-append
        *home-path*
        "files/xorg/start-xterm.sh"))
+
+    (".local/share/fonts/SymbolsNerdFontMono-Regular.ttf"
+     ,(string-append
+       *home-path*
+       "files/xorg/symbols-nerd-font/SymbolsNerdFontMono-Regular.ttf"))
 
     ;; Emacs Configuration Scaffolding
     (".config/emacs"

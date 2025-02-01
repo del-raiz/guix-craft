@@ -36,7 +36,7 @@
 ;;; UI Settings
 
 ;;; Enable screen compositing
-(run-shell-command "picom")
+;; (run-shell-command "picom -b")
 
 ;;; Set Wallpaper
 (run-shell-command "feh --bg-scale  ~/Pictures/wallpapers/desktop-bg.jpg")

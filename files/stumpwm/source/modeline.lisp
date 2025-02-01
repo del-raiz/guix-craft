@@ -43,12 +43,12 @@
 (setf wifi::*iwconfig-path* "/run/current-system/profile/sbin/iwconfig")
  
 ;;; Custom Module Settings
-;; f0 = font-hack, f1 = font-jetbrains-mono, f2 = fontawesome
+;; f0 = Hack, f1 = JetBrains Mono, f2 = Symbols Nerd Font Mono, f3 = FontAwesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
-      cpu::*cpu-usage-modeline-fmt*  "^f2^f0 ^[~A~0D%^]"
-      mem::*mem-modeline-fmt*        "^f2^f0%p"
+      cpu::*cpu-usage-modeline-fmt*  "^f2^f0 ^[~A~0D%^]"
+      mem::*mem-modeline-fmt*        "^f2^f0%p"
       wifi::*wifi-modeline-fmt*      "^f2^f0 %e %p"
-      swm-wpctl:*modeline-fmt*       "^f2^f0 %v"
+      swm-wpctl:*modeline-fmt*       "^f2󱄠^f0 %v"
       ;;
       *hidden-window-color*          "^**"
       *mode-line-highlight-template* "«~A»")
@@ -64,7 +64,7 @@
     ("%C")   ;; CPU usage
     ("%M")   ;; Memory usage
     ("%I")   ;; Wifi status
-    ("^f2^f0 %B")  ;; Battery info
+    ("^f2󰄌^f0 %B")  ;; Battery info
     ("%d"))  ;; Date/Time
   "List of formatters for the modeline.")
 

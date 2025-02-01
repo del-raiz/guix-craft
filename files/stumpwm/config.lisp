@@ -26,8 +26,15 @@
 (defconstant +guix-home-path+ "/home/logoraz/.guix-home/profile/share/"
   "Define Guix Home profile PATH.")
 
+(defconstant +xdg-data-home-path+ (concat (getenv "XDG_DATA_HOME") "/") 
+  "Define XDG_DATA_HOME PATH.")
+
+(defconstant +xdg-cache-home-path+ (concat (getenv "XDG_CACHE_HOME") "/") 
+  "Define XDG_CACHE_HOME PATH.")
+
 (defconstant +swm-data-dir+ (concat (getenv "XDG_CACHE_HOME")
-                                    "/stumpwm/"))
+                                    "/stumpwm/")
+  "Define StumpWM Data Dir PATH.")
 
 ;;; Set PATHs: modules & data directories, etc.
 
