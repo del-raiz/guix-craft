@@ -14,10 +14,8 @@
 
 (in-package :stumpwm)
 
-;; Load ~/common-lisp systems/packages
-;; (let ((asdf:*central-registry*
-;;         (cons #P"~/common-lisp/" asdf:*central-registry*)))
-;;   (asdf:load-system :micros))
+
+;;; Set PATHs: modules & data directories, etc.
 
 ;; Define Guix profiles
 (defconstant +guix-system-path+ "/run/current-system/profile/share/"
@@ -36,7 +34,6 @@
                                     "/stumpwm/")
   "Define StumpWM Data Dir PATH.")
 
-;;; Set PATHs: modules & data directories, etc.
 
 ;; Set StumpWM modules directory - at system level!
 (set-module-dir (concat +guix-home-path+
@@ -63,7 +60,12 @@
 ;; A startup message can be used when initializing StumpWM, for now set to nil.
 (setf *startup-message* nil)
 
-;; Import asdf-loads
+;;; Import asdf-loads
+;; Load ~/common-lisp systems/packages
+;; (let ((asdf:*central-registry*
+;;         (cons #P"~/common-lisp/" asdf:*central-registry*)))
+;;   (asdf:load-system :micros))
+
 ;; ref: https://www.github.com/aartaka/stumpwm-config
 ;; (asdf:load-systems :slynk :swank)
 
@@ -77,9 +79,8 @@
 ;;; Initialize X11 Desktop Environment & Resources.
 (load "~/.config/stumpwm/source/auto-start.lisp")
 
-;;; Stumpwm-contrib Packages/Libraries
 
-;;; Load in configuration/custom files
+;;; Load in configuration source files
 (load "~/.config/stumpwm/source/syntax.lisp")
 (load "~/.config/stumpwm/source/utilities.lisp")
 (load "~/.config/stumpwm/source/colors.lisp")
