@@ -53,7 +53,6 @@
 
 (define %logoraz-packages
   (list picom                      ;;|--> StumpWM Tools
-        compton
         feh
         libnotify
 

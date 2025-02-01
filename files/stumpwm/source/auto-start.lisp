@@ -35,9 +35,6 @@
 
 ;;; UI Settings
 
-;;; Enable screen compositing
-;; (run-shell-command "picom -b")
-
 ;;; Set Wallpaper
 (run-shell-command "feh --bg-scale  ~/Pictures/wallpapers/desktop-bg.jpg")
 
@@ -46,3 +43,6 @@
 
 ;;; Additional Xorg resources
 (run-shell-command "xrdb -merge ~/.Xresources")
+
+;;; Enable screen compositing
+(run-shell-command "picom")
