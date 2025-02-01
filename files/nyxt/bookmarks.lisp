@@ -15,5 +15,6 @@
 (:url "https://www.artstation.com/artwork/XB4DQn" :title "ArtStation - Away In Silence" :date "2025-01-26T19:53:40.675884Z" :tags ("Craft"))
 (:url "https://www.blueletterbible.org/esv/jhn/1/1/s_998001" :title "John 1 (ESV) - In the beginning was the" :date "2025-01-06T05:46:16.147413Z" :tags ("Philo"))
 (:url "https://www.cliki.net/naming+conventions" :title "CLiki: Naming conventions" :date "2025-01-25T23:53:46.085401Z" :tags ("Lisp2"))
+(:url "https://www.nerdfonts.com/#home" :title "Nerd Fonts - Iconic font aggregator, glyphs/icons collection, & fonts patcher" :date "2025-02-01T01:46:27.526804Z" :tags ("Craft"))
 (:url "https://www.reddit.com/user/logoraz/" :title "logoraz (u/logoraz) - Reddit" :date "2025-01-29T02:49:02.992486Z" :tags ("Craft"))
 )
