@@ -30,6 +30,11 @@
   (setq sly-lisp-implementations
         `((sbcl (,(executable-find "sbcl")))
           ;; (clasp (,(executable-find "clasp")))
+          (nyxt-guix
+           ("guix" "shell" "-D" "-f" "guix.scm"
+            "--" "bash" "-c" "env LD_LIBRARY_PATH=\"$GUIX_ENVIRONMENT/lib\" sbcl")
+           :env ("CL_SOURCE_REGISTRY=~/common-lisp//:~/common-lisp/nyxt/_build//")
+           :directory "~/common-lisp/nyxt/")
           (ccl (,(executable-find "ccl")))))
 
   (defun raz/stumpwm-sly-connect ()
