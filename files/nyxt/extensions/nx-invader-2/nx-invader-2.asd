@@ -1,7 +1,7 @@
 ;;; nx-invader-2
 ;;;
 
-(asdf:defsystem "nx-invader-2"
+(defsystem "nx-invader-2"
   :author "Erik P Almaraz"
   :license "GPLv3"
   :version "0.0.1"

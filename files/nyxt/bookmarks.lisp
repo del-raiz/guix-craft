@@ -5,6 +5,7 @@
 (:url "https://gigamonkeys.com/book/" :title "Practical Common Lisp" :date "2025-02-01T05:51:44.133700Z" :tags ("Lisp2"))
 (:url "https://git-send-email.io/" :title "Learn to use email with git!" :date "2024-07-25T02:48:04.417408Z" :tags ("Guix"))
 (:url "https://gitlab.com/nonguix/nonguix" :title "Nonguix/nonguix · GitLab" :date "2024-07-28T03:38:04.022007Z" :tags ("Guix"))
+(:url "https://google.github.io/styleguide/lispguide.xml" :title "Google Common Lisp Style Guide" :date "2025-02-01T07:24:36.264795Z" :tags ("Lisp2"))
 (:url "https://guild.systemcrafters.net/courses/guile-beginners/0424/" :title "Hands-On Guile Scheme for Beginners" :date "2024-10-19T04:51:50.232928Z" :tags ("Guile"))
 (:url "https://guix.gnu.org/cookbook/en/html_node/Software-Development.html" :title "Software Development (GNU Guix Cookbook)" :date "2024-07-27T23:50:07.263023Z" :tags ("Guix"))
 (:url "https://issues.guix.gnu.org/" :title "Guix issue tracker" :date "2024-08-11T15:47:51.773885Z" :tags ("Guix"))
