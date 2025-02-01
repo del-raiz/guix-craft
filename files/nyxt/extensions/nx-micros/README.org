@@ -1,0 +1,52 @@
+#+TITLE: nx-micros
+
+#+PRICE: 1
+
+#+DOWNLOAD: TBD
+
+#+SUPPORT-EMAIL erikalmaraz@fastmail.com
+
+#+WEBSITE https://github.com/logoraz/nx-micros/
+
+#+HELP TBD
+
+#+FAQ TBD
+
+#+REPORTS https://github.com/logoraz/nx-micros/issues
+
+#+CONTRIBUTING https://github.com/logoraz/nx-micros
+
+* nx-micros: Connect Nyxt to Lem via micros/swank
+
+TBD
+
+#+begin_quote
+TBD
+
+- Unknown
+#+end_quote
+
+* Installation
+
+Git-clone the repository to your Nyxt extension directory. This
+directory is typically located at =~/.local/share/nyxt/extensions=
+#+begin_src sh
+  git clone https://github.com/logoraz/nx-micros ~/.local/share/nyxt/extensions/nx-micros
+#+end_src
+
+After you've added nx-micros to a place that Nyxt can find it, it is
+necessary to load it in your init file. To do this, it suffices to add
+the following:
+
+#+NAME: add nx-micros to init
+#+BEGIN_SRC lisp
+  ,#+nyxt-2
+  (asdf:load-system :nx-micros)
+  ,#+ (or nyxt-3 nyxt-4)
+  (nyxt:define-nyxt-user-system-and-load "nyxt-user/nx-micros-proxy"
+                                         :description "This proxy system saves us if nx-micros fails to load.
+  Otherwise it will break all the config loading."
+                                         :depends-on ("nx-micros"))
+#+END_SRC
+
+Now, upon starting Nyxt, you can connect Nyxt to Lem via `start-micros` command starting a swank server.

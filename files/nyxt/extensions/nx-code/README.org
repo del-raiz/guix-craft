@@ -1,0 +1,49 @@
+#+TITLE: nx-code
+
+#+PRICE: 1
+
+#+DOWNLOAD: TBD
+
+#+SUPPORT-EMAIL erikalmaraz@fastmail.com
+
+#+WEBSITE https://github.com/logoraz/nx-code/
+
+#+HELP TBD
+
+#+FAQ TBD
+
+#+REPORTS https://github.com/logoraz/nx-code/issues
+
+#+CONTRIBUTING https://github.com/logoraz/nx-code
+
+* nx-code: Extensible, Modern Emacs-like Editor/IDE for Nyxt
+
+TBD
+
+#+begin_quote
+TBD
+
+- Unknown
+#+end_quote
+
+* Installation
+
+Git-clone the repository to your Nyxt extension directory. This
+directory is typically located at =~/.local/share/nyxt/extensions=
+#+begin_src sh
+  git clone https://github.com/logoraz/nx-code ~/.local/share/nyxt/extensions/nx-code
+#+end_src
+
+After you've added nx-code to a place that Nyxt can find it, it is
+necessary to load it in your init file. To do this, it suffices to add
+the following:
+
+#+NAME: add nx-code to init
+#+BEGIN_SRC lisp
+  (define-nyxt-user-system-and-load "nyxt-user/nx-micros-proxy"
+    :description "This proxy system saves us if nx-micros fails to load.
+  Otherwise it will break all the config loading."
+    :depends-on ("nx-code"))
+#+END_SRC
+
+Now, upon starting Nyxt, you can enjoy a modern advanced Emacs-like editor/IDE experience optimized for Common Lisp hacking!
