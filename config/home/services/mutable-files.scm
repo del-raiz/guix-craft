@@ -58,7 +58,17 @@
     (".local/share/fonts/SymbolsNerdFontMono-Regular.ttf"
      ,(string-append
        *home-path*
-       "files/xorg/symbols-nerd-font/SymbolsNerdFontMono-Regular.ttf"))
+       "files/xorg/fonts/SymbolsNerdFontMono-Regular.ttf"))
+
+    (".local/share/fonts/FiraCodeNerdFontMono-Regular.ttf"
+     ,(string-append
+       *home-path*
+       "files/xorg/fonts/FiraCodeNerdFontMono-Regular.ttf"))
+
+    (".local/share/fonts/FiraCodeNerdFontMono-Bold.ttf"
+     ,(string-append
+       *home-path*
+       "files/xorg/fonts/FiraCodeNerdFontMono-Bold.ttf"))
 
     ;; Emacs Configuration Scaffolding
     (".config/emacs"
