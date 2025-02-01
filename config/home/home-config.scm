@@ -21,7 +21,7 @@
                      gstreamer video compton image-viewers linux music
                      gnucash gimp inkscape graphics image gnome gnome-xyz
                      guile guile-xyz emacs emacs-xyz sdl text-editors
-                     shellutils pdf glib
+                     shellutils pdf glib enchant
                      lisp lisp-xyz wm
                      freedesktop
                      ssh cups suckless networking package-management)
@@ -89,6 +89,7 @@
 
         ;; Browsers
         (latest-nyxt nyxt)        ;;|--> gnu packages web-browsers :www-mail
+        enchant
         icecat                    ;;|--> gnu packages gnuzilla
 
         ;; Editors/IDE's
