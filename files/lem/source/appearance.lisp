@@ -30,17 +30,17 @@
   (set-opacity 0.8))
 
 ;; Use FiraCode Nerd fonts
-#+lem-sdl2
-(ignore-errors
-  (let ((font-regular +regular-font+)
-        (font-bold +bold-font+))
-    (if (and (uiop:file-exists-p font-regular)
-             (uiop:file-exists-p font-bold))
-        (lem-sdl2/display:change-font (lem-sdl2/display:current-display)
-                                      (lem-sdl2/font:make-font-config
-                                       :latin-normal-file font-regular
-                                       :latin-bold-file font-bold
-                                       :cjk-normal-file font-regular
-                                       :cjk-bold-file font-bold))
-        (message "Fonts not found."))))
+;;#+lem-sdl2
+;; (ignore-errors
+;;   (let ((font-regular +regular-font+)
+;;         (font-bold +bold-font+))
+;;     (if (and (uiop:file-exists-p font-regular)
+;;              (uiop:file-exists-p font-bold))
+;;         (lem-sdl2/display:change-font (lem-sdl2/display:current-display)
+;;                                       (lem-sdl2/font:make-font-config
+;;                                        :latin-normal-file font-regular
+;;                                        :latin-bold-file font-bold
+;;                                        :cjk-normal-file font-regular
+;;                                        :cjk-bold-file font-bold))
+;;         (message "Fonts not found."))))
 
