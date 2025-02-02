@@ -23,7 +23,7 @@
                      guile guile-xyz emacs emacs-xyz sdl text-editors
                      shellutils pdf glib enchant
                      lisp lisp-xyz wm
-                     freedesktop
+                     freedesktop kde-frameworks
                      ssh cups suckless networking package-management)
 
 
@@ -64,18 +64,19 @@
         ;; Flatpak & XDG Utilities
         flatpak
         xdg-desktop-portal
+        xdg-desktop-portal-gnome
         xdg-utils
         xdg-dbus-proxy
         shared-mime-info
         (list glib "bin")
 
         ;; Appearance
-        ;; matcha-theme
-        ;; papirus-icon-theme
-        ;; adwaita-icon-theme
-        ;; breeze-icons ;; for KDE apps
-        ;; gnome-themes-extra
-        ;; bibata-cursor-theme
+        matcha-theme
+        papirus-icon-theme
+        adwaita-icon-theme
+        breeze-icons ;; for KDE apps
+        gnome-themes-extra
+        bibata-cursor-theme
 
         ;; Fonts
         font-hack
