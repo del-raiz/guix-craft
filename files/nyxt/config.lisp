@@ -6,12 +6,6 @@
 
 ;;; References
 ;;; 1. https://github.com/aartaka/nyxt-config/
-;;; 2. https://discourse.atlas.engineer/t/where-is-the-download-directory-specified/285
-;;;    Set XDG_DOWNLOAD_DIR in start-stumpwm.sh -> should define custom XDG env vars there!
-;;;    see: nyxt:describe-function?fn=%1Bxdg-download-dir&function=%1Bxdg-download-dir
-
-
-;;; A very simple configuration... doesn't need to be complex...
 
 (in-package :nyxt-user)
 
@@ -31,8 +25,8 @@
 
 ;;; Nyxt Extensions
 
+;; Borrowed from aartaka (see #:ref-1)
 ;; Loads extentions from #P"~/.local/share/nyxt/extensions/"
-;; Borrowed from aartaka (see #:ref-2)
 (defmacro defextsystem (system &optional file)
   "Helper macro to load configuration for extensions.
 Loads a newly-generated ASDF system depending on SYSTEM.
@@ -48,8 +42,8 @@ loads."
 
 ;;; Hacks
 
-;; Borrowed from aartaka
+;; Borrowed from aartaka (see #:ref-1)
 (defmethod files:resolve ((profile nyxt:nyxt-profile)
                           (file nyxt/mode/bookmark:bookmarks-file))
-  "Reroute bookmarks to the `.config/nyxt/' directory."
+  "Re-route bookmarks to the `.config/nyxt/' directory."
   #P"~/.config/nyxt/bookmarks.lisp")
