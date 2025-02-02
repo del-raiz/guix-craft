@@ -31,18 +31,31 @@
 
 ;;; Nyxt Extensions
 
+;; Borrowed from aartaka (see #:ref-2)
+(defmacro defextsystem (system &optional file)
+  "Helper macro to load configuration for extensions.
+Loads a newly-generated ASDF system depending on SYSTEM.
+FILE, if provided, is loaded after the generated system successfully
+loads."
+  `(define-nyxt-user-system-and-load ,(gensym "NYXT-USER/")
+     :depends-on (,system) ,@(when file `(:components (,file)))))
+
 ;; ~/.local/share/nyxt/extensions/*
-(define-nyxt-user-system-and-load nyxt-user/nx-invader-2-proxy
-  :description "Simple Dark style theme for Nyxt"
-  :depends-on ("nx-invader-2"))
+(defextsystem :nx-invader-2)
+(defextsystem :nx-micros)
+(defextsystem :nx-code)
 
-(nyxt:define-nyxt-user-system-and-load nyxt-user/nx-micros-proxy
-  :description "Connect Nyxt to Lem via Micros."
-  :depends-on ("nx-micros"))
+;; (define-nyxt-user-system-and-load nyxt-user/nx-invader-2-proxy
+;;   :description "Simple Dark style theme for Nyxt"
+;;   :depends-on ("nx-invader-2"))
 
-(define-nyxt-user-system-and-load nyxt-user/nx-code-proxy
-  :description "Modern Emacs-like Editor/IDE for Nyxt."
-  :depends-on ("nx-code"))
+;; (nyxt:define-nyxt-user-system-and-load nyxt-user/nx-micros-proxy
+;;   :description "Connect Nyxt to Lem via Micros."
+;;   :depends-on ("nx-micros"))
+
+;; (define-nyxt-user-system-and-load nyxt-user/nx-code-proxy
+;;   :description "Modern Emacs-like Editor/IDE for Nyxt."
+;;   :depends-on ("nx-code"))
 
 
 ;;; Hacks
