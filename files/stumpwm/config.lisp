@@ -96,5 +96,5 @@
 ;; Notify that everything is ready!
 (setf *startup-message*
       (concatenate 'string
-                   "^6*Welcome ^Blogoraz^b. "
-                   "Your ^BStumpWM^b session is ready!"))
+                   "^6*Greetings ^Blogoraz^b! "
+                   "Your ^BStumpWM^b session is ready..."))

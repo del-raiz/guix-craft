@@ -51,7 +51,7 @@
       swm-wpctl:*modeline-fmt*       "^f2󱄠^f0 %v"
       ;;
       *hidden-window-color*          "^**"
-      *mode-line-highlight-template* "«~A»")
+      *mode-line-highlight-template* "^f2^f0~A^f2^f0")
 
 
 ;;; Modeline Formatter

@@ -16,11 +16,11 @@
 
 ;;; Window Groups & Placement
 (when *initializing*
-  (grename "[HOME]")
-  (gnewbg  "[DEV]")
-  (gnewbg  "[WWW]")
-  (gnewbg  "[ETC]")
-  (gnewbg  "[PRIV]"))
+  (grename "HOME")
+  (gnewbg  "DEV")
+  (gnewbg  "WWW")
+  (gnewbg  "ETC")
+  (gnewbg  "PRIV"))
 
 (clear-window-placement-rules)
 
