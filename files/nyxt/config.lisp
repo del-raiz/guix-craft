@@ -30,7 +30,8 @@
 
 
 ;;; Nyxt Extensions
-;; Loads from #P"~/.local/share/nyxt/extensions/*"
+
+;; Loads extentions from #P"~/.local/share/nyxt/extensions/"
 ;; Borrowed from aartaka (see #:ref-2)
 (defmacro defextsystem (system &optional file)
   "Helper macro to load configuration for extensions.
