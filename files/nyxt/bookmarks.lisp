@@ -1,5 +1,6 @@
 (
 (:url "https://config.phundrak.com/stumpwm/" :title "StumpWM | Phundrak's Dotfiles" :date "2025-01-31T21:37:30.172713Z" :tags ("Lisp2"))
+(:url "https://dthompson.us/posts/installing-guix-on-a-10th-gen-thinkpad-x1.html" :title "Installing Guix on a 10th gen Thinkpad X1 — dthompson" :date "2025-02-02T00:30:23.755166Z" :tags ("Guix"))
 (:url "https://forum.systemcrafters.net/" :title "System Crafters - System Crafters Forum" :date "2025-01-07T01:54:42.012329Z" :tags ("Craft"))
 (:url "https://frame.work/" :title "Framework | Fix Consumer Electronics" :date "2025-01-11T17:18:53.018223Z" :tags ("Craft"))
 (:url "https://gigamonkeys.com/book/" :title "Practical Common Lisp" :date "2025-02-01T05:51:44.133700Z" :tags ("Lisp2"))
