@@ -6,6 +6,7 @@
 ;;; References
 ;;; 1. https://github.com/aartaka/nyxt-config/
 
+
 (in-package :nyxt-user)
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
