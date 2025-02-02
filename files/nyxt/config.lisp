@@ -52,4 +52,4 @@ loads."
 (defmethod files:resolve ((profile nyxt:nyxt-profile)
                           (file nyxt/mode/bookmark:bookmarks-file))
   "Reroute bookmarks to the `.config/nyxt/' directory."
-  #p"~/.config/nyxt/bookmarks.lisp")
+  #P"~/.config/nyxt/bookmarks.lisp")
