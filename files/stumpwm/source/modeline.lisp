@@ -46,7 +46,7 @@
 ;; f0 = Hack, f1 = JetBrains Mono, f2 = Symbols Nerd Font Mono, f3 = FontAwesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
       cpu::*cpu-usage-modeline-fmt*  "^f2^f0 ^[~A~0D%^]"
-      mem::*mem-modeline-fmt*        "^f2^f0%p"
+      mem::*mem-modeline-fmt*        " ^f2^f0%p"
       wifi::*wifi-modeline-fmt*      "^f2^f0 %e %p"
       swm-wpctl:*modeline-fmt*       "^f2󱄠^f0 %v"
       ;;
@@ -57,15 +57,15 @@
 ;;; Modeline Formatter
 ;;TODO: change format so groups are blue...
 (defvar *mode-line-formatter-list*
-  '(("%g")   ;; Groups
-    ("%W")   ;; Windows
-    ("^>")   ;; StumpWM modeline seperator
-    ("%C")   ;; CPU usage
-    ("%M")   ;; Memory usage
-    ("%P")   ;; Audio info
-    ("%I")   ;; Wifi status
-    ("^f2󰄌^f0 %B")  ;; Battery info
-    ("%d"))  ;; Date/Time
+  '(("%g")      ;; Groups
+    ("%W")      ;; Windows
+    ("^>")      ;; StumpWM modeline seperator
+    ("^f2^f0") ;; Common Lisp Logo o.O
+    ("%C %M")   ;; CPU usage & Memory usage
+    ("%P")      ;; Audio info
+    ("%I")      ;; Wifi status
+    ("^f2󰄌^f0 %B") ;; Battery info
+    ("%d"))     ;; Date/Time
   "List of formatters for the modeline.")
 
 (defun generate-modeline (elements &optional not-invertedp rightp)
