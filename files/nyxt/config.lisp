@@ -1,8 +1,7 @@
 ;;;; Nyxt Configuration - Initialization File
 
 ;;; Commentary:
-;;; Set Buffer Settings & load in Keepassxc interface configuration as well as
-;;; modified invader theme as an extension (similar to StumpWM contrib modules).
+;;; Set buffer settings, password interface, Extensions & Hacks
 
 ;;; References
 ;;; 1. https://github.com/aartaka/nyxt-config/
