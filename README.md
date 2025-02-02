@@ -28,6 +28,8 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
           |- dot-bashrc.sh
           |- services/                       ;; Home Service Modules
              |- environment.scm
+             |- home-impure-symlinks.scm
+             |- mutable-files.scm
              |- streaming.scm
              |- udiskie.scm
              |- xdg-files.scm
@@ -36,7 +38,7 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
           |- devtools-manifest.scm
           |- org-docs-manifest.scm
        |- services/                          ;; Custom GuixOS Service Modules
-          |- substitutes.scm
+          |- tbd
        |- system/                            ;; GuixOS Config Root
           |- system-config.scm               ;; ** GuixOS StumpWM System Config **
           |- channels.scm
@@ -48,12 +50,12 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
        |- isync/...
        |- msmtp/...
        |- emacs/...
-       |- lem/...                            ;; New!! Resurrected
-       |- nyxt/...                           ;; New!! Ressurrected
+       |- lem/...
+       |- nyxt/...                           ;; New!! Nyxt Config
        |- stumpwm/                           ;; StumpWM Config
           |- config
+          |- source/
           |- modules/
-          |- libraries/
        |- xorg/...
        |- zathura/...                        ;; tbd
 ```
@@ -61,12 +63,13 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 
 ## Philosophy
 
- - Create a highly functional WM setup that is efficient & aesthetic 
+ - Create a highly functional WM setup that is efficient & aesthetic
+ - Configure everything using Common Lisp, Guile/Guix where possible!
+ - Use Common Lisp & Guile programs where possible     
  - Construct a modulur Guix System configuration as a Guile program
  - Handle customizations as custom Guix packages & services
- - Configure everything using Guile/Guix where possible!
  - Generalize to support setup on multiple machines
- - Optimize to create an efficient system for hacking in Guile Scheme
+ - Optimize to create an efficient system for hacking in Common Lisp
  - Eventually create a System/Home service utility that enhances Guix   
 
 
