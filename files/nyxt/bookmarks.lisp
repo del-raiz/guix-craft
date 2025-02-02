@@ -11,6 +11,7 @@
 (:url "https://guix.gnu.org/cookbook/en/html_node/Software-Development.html" :title "Software Development (GNU Guix Cookbook)" :date "2024-07-27T23:50:07.263023Z" :tags ("Guix"))
 (:url "https://issues.guix.gnu.org/" :title "Guix issue tracker" :date "2024-08-11T15:47:51.773885Z" :tags ("Guix"))
 (:url "https://lispcookbook.github.io/cl-cookbook/" :title "The Common Lisp Cookbook" :date "2025-02-01T05:51:06.673905Z" :tags ("Lisp2"))
+(:url "https://paulgraham.com/onlisptext.html" :title "Download" :date "2025-02-02T04:58:45.127156Z" :tags ("Lisp2"))
 (:url "https://renter.turbotenant.com/auth/login" :title "TurboTenant" :date "2024-07-24T13:25:01.796231Z" :tags ("Home"))
 (:url "https://stumpwm.github.io/" :title "Stump Window Manager" :date "2025-01-28T01:26:05.849382Z" :tags ("Craft"))
 (:url "https://stumpwm.github.io/git/stumpwm-git.html#Top" :title "StumpWM Manual: Top" :date "2025-01-26T15:30:41.643337Z" :tags ("Lisp2"))
