@@ -45,4 +45,4 @@
 (run-shell-command "xrdb -merge ~/.Xresources")
 
 ;;; Enable screen compositing
-(run-shell-command "picom")
+(run-shell-command "picom --backend xrender")
