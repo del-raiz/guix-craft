@@ -1,8 +1,7 @@
 ;;;; Nyxt Theme Module
 
 ;;; Commentary:
-;;; TODO: Create "nord-theme similar to the borrowed invader-theme, use same logic contruct
-;;;       below.
+;;;
 
 ;;; References:
 ;;; 1. Invader Theme:
@@ -11,7 +10,7 @@
 ;;;    - wget nyxt-browser.com/static/release/invader.tar.gz
 ;;; 2. Sourced Saved in ~/.local/share/nyxt/extensions/invader
 
-#+(or nyxt-3 nyxt-4)
+;;; Only for nxyt-3 or greater
 (nyxt:define-package :nx-invader-2)
 
 (in-package :nx-invader-2)
