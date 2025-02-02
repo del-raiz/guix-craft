@@ -60,9 +60,9 @@
   '(("%g")   ;; Groups
     ("%W")   ;; Windows
     ("^>")   ;; StumpWM modeline seperator
-    ("%P")   ;; Audio info
     ("%C")   ;; CPU usage
     ("%M")   ;; Memory usage
+    ("%P")   ;; Audio info
     ("%I")   ;; Wifi status
     ("^f2󰄌^f0 %B")  ;; Battery info
     ("%d"))  ;; Date/Time
