@@ -45,4 +45,5 @@
 (run-shell-command "xrdb -merge ~/.Xresources")
 
 ;;; Enable screen compositing
+;; Necessary to pecify xrender as backend (transparency/opacity effects)
 (run-shell-command "picom --backend xrender")

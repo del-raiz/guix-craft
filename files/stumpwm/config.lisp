@@ -30,9 +30,17 @@
 (defconstant +xdg-cache-home-path+ (concat (getenv "XDG_CACHE_HOME") "/") 
   "Define XDG_CACHE_HOME PATH.")
 
-(defconstant +swm-data-dir+ (concat (getenv "XDG_CACHE_HOME")
+(defconstant +swm-data-dir+ (concat +xdg-data-home-path+
                                     "/stumpwm/")
   "Define StumpWM Data Dir PATH.")
+
+(defconstant +swm-config-source-dir+ (concat (getenv "XDG_CONFIG_HOME")
+                                             "/stumpwm/source/")
+  "Define StumpWM Config Source Directory.")
+
+(defconstant +swm-config-module-dir+ (concat (getenv "XDG_CONFIG_HOME")
+                                             "/stumpwm/modules/")
+  "Define StumpWM Config Modules Directory.")
 
 
 ;; Set StumpWM modules directory - at system level!
@@ -73,28 +81,23 @@
 ;; (setf *altgr-offset* 4)
 ;; (register-altgr-as-modifier)
 
-;; TODO: Determine a better way to load in modules...
-;; sort of just doing things the primitive way.
 
 ;;; Initialize X11 Desktop Environment & Resources.
-(load "~/.config/stumpwm/source/auto-start.lisp")
-
+(load #P"~/.config/stumpwm/source/start-xenv.lisp")
 
 ;;; Load in configuration source files
-(load "~/.config/stumpwm/source/syntax.lisp")
-(load "~/.config/stumpwm/source/utilities.lisp")
-(load "~/.config/stumpwm/source/colors.lisp")
-(load "~/.config/stumpwm/source/theme.lisp")
-(load "~/.config/stumpwm/source/frames.lisp")
-(load "~/.config/stumpwm/source/keybindings.lisp")
-(load "~/.config/stumpwm/source/modeline.lisp")
+(load #P"~/.config/stumpwm/source/syntax.lisp")
+(load #P"~/.config/stumpwm/source/utilities.lisp")
+(load #P"~/.config/stumpwm/source/colors.lisp")
+(load #P"~/.config/stumpwm/source/theme.lisp")
+(load #P"~/.config/stumpwm/source/frames.lisp")
+(load #P"~/.config/stumpwm/source/keybindings.lisp")
+(load #P"~/.config/stumpwm/source/modeline.lisp")
 
 ;; Start the mode line
 (when *initializing*
   (mode-line))
 
 ;; Notify that everything is ready!
-(setf *startup-message*
-      (concatenate 'string
-                   "^6*Greetings ^Blogoraz^b! "
-                   "Your ^BStumpWM^b session is ready..."))
+(setf *startup-message* (concat "^6*Greetings ^Blogoraz^b! "
+                                "Your ^BStumpWM^b session is ready..."))
