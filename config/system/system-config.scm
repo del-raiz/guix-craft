@@ -64,6 +64,7 @@
           (home-directory "/home/logoraz")
           (group "users")
           (supplementary-groups '("wheel"    ;; sudo
+                                  "seat"     ;; -
                                   "netdev"   ;; network devices
                                   "tty"      ;; -
                                   "input"    ;; -
@@ -89,6 +90,7 @@
          pipewire
          wireplumber
          bluez
+         bluez-alsa
          brightnessctl
          lm-sensors
          openssh-sans-x
@@ -149,7 +151,7 @@
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (service bluetooth-service-type
             (bluetooth-configuration
-             (auto-enable? #f)))
+             (auto-enable? #t)))
 
    (service cups-service-type
             (cups-configuration

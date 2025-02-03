@@ -47,7 +47,6 @@
 (define %cl-packages
   (list ccl
         ;; clasp-cl (??)
-        cl-iterate
         cl-micros
         cl-slime-swank))
 
@@ -127,7 +126,6 @@
         blender
 
         ;; Utilities
-        blueman                    ;;|--> gnu package networking
         udiskie
         network-manager-applet
         trash-cli))
