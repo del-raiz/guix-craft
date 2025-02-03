@@ -19,7 +19,7 @@
 (defvar logoraz-nord1 "#3b4252")  ; "Dark Gray'
 (defvar logoraz-nord2 "#434c5e")  ; 'Medium Gray'
 (defvar logoraz-nord3 "#4c566a")  ; 'Gray'
-(defvar logoraz-nord4 "#d8dee9")  ; 'Light grey'
+(defvar logoraz-nord4 "#d8dee9")  ; 'Light Gray'
 (defvar logoraz-nord5 "#e5e9f0")  ; 'Off-white'
 (defvar logoraz-nord6 "#eceff4")  ; 'White'
 (defvar logoraz-nord7 "#8fbcbb")  ; 'Blue/Green'
