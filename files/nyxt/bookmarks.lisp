@@ -1,4 +1,5 @@
 (
+(:url "https://common-lisp.net/" :title "Welcome to Common-Lisp.net!" :date "2025-02-03T02:38:08.377384Z" :tags ("Lisp2"))
 (:url "https://config.phundrak.com/stumpwm/" :title "StumpWM | Phundrak's Dotfiles" :date "2025-01-31T21:37:30.172713Z" :tags ("Lisp2"))
 (:url "https://dthompson.us/posts/installing-guix-on-a-10th-gen-thinkpad-x1.html" :title "Installing Guix on a 10th gen Thinkpad X1 — dthompson" :date "2025-02-02T00:30:23.755166Z" :tags ("Guix"))
 (:url "https://forum.systemcrafters.net/" :title "System Crafters - System Crafters Forum" :date "2025-01-07T01:54:42.012329Z" :tags ("Craft"))
