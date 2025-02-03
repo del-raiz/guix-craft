@@ -22,7 +22,13 @@
 ;;; 2. https://github.com/stumpwm/stumpwm-contrib/tree/master/util/stumpwm-nm
 
 
-(in-package :stumpwm)
+(uiop:define-package :swm-nmctl
+  (:use #:cl :stumpwm)
+  (:local-nicknames ( ))
+  (:export ))
+
+(in-package :swm-nmctl)
+
 
 ;; TODO - create a stumpwm network manager tool/util for nmcli...
 ;; say stump-nmcli -> will need a way to prompt for sudo access to establish connections...

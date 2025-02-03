@@ -7,5 +7,4 @@
   :version "0.1.1"
   :serial t
   :depends-on ("stumpwm")
-  :components ((:file "package")
-               (:file "swm-nmctl")))
+  :components ((:file "swm-nmctl")))
