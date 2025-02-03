@@ -99,5 +99,5 @@
   (mode-line))
 
 ;; Notify that everything is ready!
-(setf *startup-message* (concat "^6*Greetings ^Blogoraz^b! "
-                                "Your ^BStumpWM^b session is ready..."))
+(setf *startup-message* (concat "^6*^BGreetings logoraz! "
+                                "Your StumpWM session is ready...^b"))
