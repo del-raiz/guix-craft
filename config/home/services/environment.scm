@@ -23,8 +23,8 @@
     ("LC_COLLATE" . "C")
 
     ;; Set Default editor
-    ("EDITOR" . "lem")
-    ;; ("VISUAL" . "lem")
+    ("EDITOR" . "emacs")
+    ("VISUAL" . "emacs")
 
     ;; Set quotebrowser as the default
     ("BROWSER" . "nyxt")

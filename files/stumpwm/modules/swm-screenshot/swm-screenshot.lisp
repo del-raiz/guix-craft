@@ -1,7 +1,7 @@
 ;;;; swm-screenshot.lisp
 
 ;;; Copyright (C) 2015 - 2021 Michael Filonenko
-;;; Copyright (C) 2024 Erik P Almaraz <erikalmaraz@fastmail.com>
+;;; Copyright (C) 2024 - 2026 Erik P Almaraz <erikalmaraz@fastmail.com>
 ;;;
 ;;; This program is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU General Public License as published by

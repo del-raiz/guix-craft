@@ -1,11 +1,11 @@
 # GuixOS (System + Home) StumpWM Configuration
 
-GuixOS StumpWM ("Crystallized Momentum"): A Custom Guix System Distribution
-configured for StumpWM. Riding out the wave of X11, until StumpWM/Mahogony
+GuixOS StumpWM ("Crystallized Momentum"): A Custom Guix System Distribution configured for StumpWM.
+Riding out the wave of X11, until [StumpWM/Mahogany](https://github.com/stumpwm/mahogany)
 is ready for use!
 
-This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
-4th Gen (Type 20FB) Laptop.
+This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB)
+Laptop.
 
 
 ## Screenshots
@@ -63,15 +63,14 @@ This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon
 
 ## Philosophy
 
- - Create a highly functional WM setup that is efficient & aesthetic
+ - Create a highly functional WM setup that is efficient & aesthetic.
  - Configure everything using Common Lisp, Guile/Guix where possible!
- - Use Common Lisp & Guile programs where possible     
- - Construct a modulur Guix System configuration as a Guile program
- - Handle customizations as custom Guix packages & services
- - Generalize to support setup on multiple machines
- - Optimize to create an efficient system for hacking in Common Lisp
- - Eventually create a System/Home service utility that enhances Guix   
-
+ - Construct a modulur Guix System configuration as a Guile program.
+ - Handle customizations as custom Guix packages & services.
+ - Generalize to support setup on multiple machines.
+ - Optimize to create an efficient system for hacking in Common Lisp.
+ - Eventually create a System/Home service utility that enhances Guix.   
+ - Use Common Lisp & Guile programs where possible.
 
 ## Download & Install
 
