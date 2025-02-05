@@ -1,7 +1,7 @@
 ;;;; end-session.lisp
 
 ;;; Copyright (c) 2018 Stuart Dilts
-;;; Copyright (C) 2024 Erik P Almaraz
+;;; Copyright (C) 2024 - 2025 Erik P Almaraz
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person
 ;;; obtaining a copy of this software and associated documentation
@@ -28,7 +28,10 @@
 ;;;
 
 
-(in-package #:end-session)
+(defpackage :end-session
+  (:use :cl :stumpwm)
+  (:export #:*end-session-command*))
+(in-package :end-session)
 
 (defvar *end-session-command* "systemctl")
 

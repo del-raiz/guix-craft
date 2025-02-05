@@ -16,14 +16,13 @@
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-(uiop:define-package :swm-screenshot
+(defpackage :swm-screenshot
   (:use :cl :stumpwm)
   (:local-nicknames (:xl :xlib)
                     (:lt :local-time))
   (:export #:screenshot
            #:screenshot-window
            #:screenshot-area))
-
 (in-package :swm-screenshot)
 
 

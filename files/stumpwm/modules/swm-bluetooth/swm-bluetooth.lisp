@@ -22,14 +22,13 @@
 ;;; 1. https://config.phundrak.com/stumpwm#bluetooth
 ;;; 2. TBD
 
-(uiop:define-package :swm-bluetooth
+(defpackage :swm-bluetooth
   (:use :cl :stumpwm)
   (:local-nicknames (:re :ppcre))
   (:export #:bluetooth-message-command
            #:bluetooth-turn-off-command
            #:bluetooth-connect-device
            #:*bluetooth-command*))
-
 (in-package :swm-bluetooth)
 
 

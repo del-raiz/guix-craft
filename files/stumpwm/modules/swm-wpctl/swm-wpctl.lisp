@@ -16,7 +16,7 @@
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-(uiop:define-package :swm-wpctl
+(defpackage :swm-wpctl
   (:use :cl :stumpwm)
   (:local-nicknames (:re :ppcre)
                     (:pf :parse-float))
@@ -38,7 +38,6 @@
            #:*step*
            #:*modeline-fmt*
            #:*source-modeline-fmt*))
-
 (in-package :swm-wpctl)
 
 

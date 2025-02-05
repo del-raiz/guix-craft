@@ -22,11 +22,11 @@
 ;;; 2. https://github.com/stumpwm/stumpwm-contrib/tree/master/util/stumpwm-nm
 
 
-(uiop:define-package :swm-nmctl
-  (:use #:cl :stumpwm)
-  (:local-nicknames ( ))
-  (:export ))
-
+(defpackage :swm-nmctl
+  (:use :cl :stumpwm)
+  (:import-from :foo/baz #:sym1 #:sym2)
+  (:local-nicknames (:nickname :original-package-name))
+  (:export #:exsym1))
 (in-package :swm-nmctl)
 
 
